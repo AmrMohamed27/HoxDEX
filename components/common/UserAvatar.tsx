@@ -4,6 +4,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
@@ -29,6 +30,10 @@ const UserAvatar = () => {
             </Avatar>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="rounded-lg bg-white dark:bg-background-gray  border-2 border-theme-gray/20 mt-2 mr-8 z-[60] group">
+            <DropdownMenuLabel className="text-lg font-semibold pl-4">
+              {session?.user?.name}
+            </DropdownMenuLabel>
+            <DropdownMenuSeparator />
             {dropdownLinks.map((item) => (
               <DropdownMenuItem
                 key={item.id}

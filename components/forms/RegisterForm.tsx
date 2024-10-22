@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import OrSeparator from "../OrSeparator";
+import OrSeparator from "../common/OrSeparator";
 import Link from "next/link";
 import { registerSchema } from "@/schema/registerSchema";
 import { zodResolver } from "@hookform/resolvers/zod";

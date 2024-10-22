@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import OrSeparator from "@/components/OrSeparator";
+import OrSeparator from "@/components/common/OrSeparator";
 import { FcGoogle as GoogleIcon } from "react-icons/fc";
 import SignInForm from "@/components/forms/SignInForm";
 import { useState } from "react";

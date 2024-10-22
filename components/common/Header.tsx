@@ -2,22 +2,21 @@
 import { headerItems } from "@/constants";
 import Link from "next/link";
 import ThemeSwitch from "./ThemeSwitch";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import { Loader2 } from "lucide-react";
-import UserAvatar from "./UserAvatar";
 import Logo from "./Logo";
 import { HeaderProps } from "@/types";
 import { Menu } from "lucide-react";
 import { useCurrentSession } from "@/hooks/useCurrentSession";
+import UserAvatar from "./UserAvatar";
 
 const Header = ({ toggleMobileMenu }: HeaderProps) => {
-  const { session, status } = useCurrentSession();
+  const { status } = useCurrentSession();
   const showSession = () => {
     if (status === "authenticated") {
       return (
         <div className="flex flex-row items-center gap-4">
           <UserAvatar />
-          <p>{session?.user?.name}</p>
         </div>
       );
     } else if (status === "loading") {
