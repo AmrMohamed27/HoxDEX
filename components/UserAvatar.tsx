@@ -1,5 +1,4 @@
 "use client";
-import { useSession } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -10,18 +9,22 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useRouter } from "next/navigation";
 import { dropdownLinks } from "@/constants";
+import { useCurrentSession } from "@/hooks/useCurrentSession";
 
 const UserAvatar = () => {
-  const { data: session } = useSession();
+  const { session } = useCurrentSession();
   const router = useRouter();
 
   return (
-    session?.user?.image !== null && (
+    session !== undefined &&
+    session !== null &&
+    session.user !== undefined &&
+    session?.user.image !== null && (
       <>
         <DropdownMenu>
           <DropdownMenuTrigger>
             <Avatar className="cursor-pointer">
-              <AvatarImage src={session?.user?.image} />
+              <AvatarImage src={session.user.image} />
               <AvatarFallback>UN</AvatarFallback>
             </Avatar>
           </DropdownMenuTrigger>

@@ -1,10 +1,10 @@
 import { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
-import User from "@/models/User";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import client from "./dbClient";
 import dbConnect from "./db";
+import User from "@/models/User";
 
 export const authOptions: NextAuthOptions = {
   // Secret for Next-auth, without this JWT encryption/decryption won't work
