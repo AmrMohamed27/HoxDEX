@@ -95,7 +95,10 @@ const SignInForm = () => {
             </FormItem>
           )}
         />
-        <Button type="submit" className="bg-theme-blue w-full">
+        <Button
+          type="submit"
+          className="bg-theme-blue text-white w-full hover:bg-theme-blue/40"
+        >
           Sign In
         </Button>
         {/* Separator */}

@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import AuthProvider from "./context/AuthProvider";
 import { Toaster } from "@/components/ui/toaster";
+import { Providers } from "./providers";
 
 const alata = localFont({
   src: "./fonts/Alata.ttf",
@@ -21,9 +22,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${alata.variable} antialiased`}>
-        <AuthProvider>{children}</AuthProvider>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${alata.variable} antialiased dark:bg-background-gray`}>
+        <Providers>
+          <AuthProvider>{children}</AuthProvider>
+        </Providers>
         <Toaster />
       </body>
     </html>

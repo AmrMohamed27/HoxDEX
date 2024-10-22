@@ -9,10 +9,19 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      transitionProperty: {
+        width: "width, transform",
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         "theme-blue": "#1f09ff",
+        "background-gray": "#1F2128",
+        "theme-gray": "#777E90",
+        "hover-gray": "#242731",
+        "hover-blue": "#E0E9FD",
+        white: "#F7F9FD",
+        "pure-white": "#ffffff",
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
