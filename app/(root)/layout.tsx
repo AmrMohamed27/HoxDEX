@@ -1,4 +1,5 @@
 "use client";
+import Footer from "@/components/common/Footer";
 import Header from "@/components/common/Header";
 import Sidebar from "@/components/common/Sidebar";
 import { useState } from "react";
@@ -24,6 +25,7 @@ export default function RootLayout({
       <div className="flex min-h-screen flex-col items-start justify-start w-full">
         <Header toggleMobileMenu={toggleMobileMenu} />
         {children}
+        <Footer />
       </div>
     </main>
   );

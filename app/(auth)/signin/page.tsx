@@ -7,7 +7,7 @@ import { FcGoogle as GoogleIcon } from "react-icons/fc";
 import SignInForm from "@/components/forms/SignInForm";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
-import Link from "next/link";
+import { Link } from "react-transition-progress/next";
 
 const Page = () => {
   // Define handle google sign in

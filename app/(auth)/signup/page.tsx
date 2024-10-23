@@ -3,10 +3,8 @@
 import Image from "next/image";
 import React from "react";
 import RegisterForm from "@/components/forms/RegisterForm";
-import Link from "next/link";
-
+import { Link } from "react-transition-progress/next";
 const Page = () => {
-  // Define handle google sign in
   return (
     <section className="flex flex-col xl:flex-row min-h-screen">
       <div className="bg-theme-blue xl:min-h-screen flex items-center justify-center">

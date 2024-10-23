@@ -1,6 +1,6 @@
 "use client";
 import { sidebarLinks } from "@/constants";
-import Link from "next/link";
+import { Link } from "react-transition-progress/next";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import {

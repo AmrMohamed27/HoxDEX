@@ -22,6 +22,7 @@ const config: Config = {
         "hover-blue": "#E0E9FD",
         white: "#F7F9FD",
         "pure-white": "#ffffff",
+        black: "#191B21",
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",

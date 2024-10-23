@@ -1,7 +1,6 @@
 "use client";
 import { headerItems } from "@/constants";
-import Link from "next/link";
-import ThemeSwitch from "./ThemeSwitch";
+import { Link } from "react-transition-progress/next";import ThemeSwitch from "./ThemeSwitch";
 import { Button } from "../ui/button";
 import { Loader2 } from "lucide-react";
 import Logo from "./Logo";
@@ -38,7 +37,7 @@ const Header = ({ toggleMobileMenu }: HeaderProps) => {
     }
   };
   return (
-    <header className="flex flex-row justify-between items-end px-8 py-8 w-full">
+    <header className="flex flex-row justify-between items-end px-4 md:px-8 py-4 md:py-8 w-full">
       {/* Desktop Links */}
       <div className="flex-row items-center gap-16 hidden xl:flex">
         {headerItems.map((item) => (

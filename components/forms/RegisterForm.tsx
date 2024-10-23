@@ -12,23 +12,26 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import OrSeparator from "../common/OrSeparator";
-import Link from "next/link";
+import { Link } from "react-transition-progress/next";
 import { registerSchema } from "@/schema/registerSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
 import { register } from "@/actions/register";
 import { signIn } from "next-auth/react";
 
 const RegisterForm = () => {
+  // Define search params for email passed in url
+  const searchParams = useSearchParams();
+  const emailFromParams = searchParams.get("email");
   // Define form
   const form = useForm<z.infer<typeof registerSchema>>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
       name: "",
-      email: "",
+      email: emailFromParams ?? "",
       password: "",
     },
   });
