@@ -162,3 +162,30 @@ export const footerContent: FooterContentType[] = [
     ],
   },
 ];
+
+export const coinsIds = [
+  "bitcoin",
+  "binancecoin",
+  "ethereum",
+  "solana",
+  "dogecoin",
+  "pepe",
+  "catizen",
+  "shiba-inu",
+  "fetch-ai",
+  "book-of-meme",
+  "radicle",
+  "adventure-gold",
+  "scroll",
+  "golem",
+  "raydium",
+  "near",
+  "audius",
+  "ripple",
+  "cardano",
+  "dia-data",
+  "the-open-network",
+  "avalanche-2"
+];
+
+export const coinsIdsString = coinsIds.join(",");
