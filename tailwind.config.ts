@@ -23,6 +23,8 @@ const config: Config = {
         white: "#F7F9FD",
         "pure-white": "#ffffff",
         black: "#191B21",
+        "theme-green": "#4FBF67",
+        "theme-red": "#E32D2D",
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",

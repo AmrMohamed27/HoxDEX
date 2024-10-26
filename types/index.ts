@@ -59,3 +59,32 @@ export interface FooterContentType {
 export interface CTAProps {
   children: React.ReactNode;
 }
+
+export interface CoinCardProps {
+  name: string;
+  symbol: string;
+  imageUrl: string;
+  price: number;
+  change24h: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  chartData: any;
+}
+
+export interface coinObject {
+  name: string;
+  symbol: string;
+}
+
+export interface coinObjectList {
+  [key: string]: coinObject;
+}
+
+export interface PriceChartProps {
+  prices: number[][];
+  isPositive: boolean;
+}
+
+export interface PriceData {
+  timestamp: string; // or Date, if you prefer to keep it as a Date object
+  value: number;
+}

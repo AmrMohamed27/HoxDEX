@@ -12,6 +12,8 @@
   :root {
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
+    --chart-green: 133 47% 53%;
+    --chart-red: 0 76% 53%;
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;

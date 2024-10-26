@@ -6,6 +6,7 @@ import { FaBitcoin as BuyIcon } from "react-icons/fa";
 import { CgProfile as Profile } from "react-icons/cg";
 import { FaSignOutAlt as SignOutIcon } from "react-icons/fa";
 import {
+  coinObjectList,
   dropdownLinksType,
   FooterContentType,
   headerItemsType,
@@ -163,7 +164,7 @@ export const footerContent: FooterContentType[] = [
   },
 ];
 
-export const coinsIds = [
+export const coinsIds: string[] = [
   "bitcoin",
   "binancecoin",
   "ethereum",
@@ -172,20 +173,41 @@ export const coinsIds = [
   "pepe",
   "catizen",
   "shiba-inu",
-  "fetch-ai",
-  "book-of-meme",
-  "radicle",
-  "adventure-gold",
-  "scroll",
-  "golem",
-  "raydium",
-  "near",
-  "audius",
-  "ripple",
-  "cardano",
-  "dia-data",
-  "the-open-network",
-  "avalanche-2"
 ];
 
 export const coinsIdsString = coinsIds.join(",");
+
+export const coinObjects: coinObjectList = {
+  bitcoin: {
+    name: "Bitcoin",
+    symbol: "BTC",
+  },
+  binancecoin: {
+    name: "Binance Coin",
+    symbol: "BNB",
+  },
+  ethereum: {
+    name: "Ethereum",
+    symbol: "ETH",
+  },
+  solana: {
+    name: "Solana",
+    symbol: "SOL",
+  },
+  dogecoin: {
+    name: "Dogecoin",
+    symbol: "DOGE",
+  },
+  pepe: {
+    name: "Pepe",
+    symbol: "PEPE",
+  },
+  catizen: {
+    name: "Catizen",
+    symbol: "CATZ",
+  },
+  "shiba-inu": {
+    name: "Shiba Inu",
+    symbol: "SHIB",
+  },
+};
