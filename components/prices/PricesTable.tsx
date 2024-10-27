@@ -14,7 +14,6 @@ import PriceChart from "../home/PriceChart";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const PricesTable = ({ coinData, chartData }: any) => {
-  Object.keys(coinObjects).map((id) => console.log(chartData));
   return (
     <Table className="text-base sm:text-md md:text-base">
       <TableHeader>

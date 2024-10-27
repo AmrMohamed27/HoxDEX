@@ -8,7 +8,7 @@ import { getServerSession } from "next-auth";
 export const withdraw = async (values: any) => {
   const { coinId, amount } = values;
   const balanceKey = `balance.${coinId}`;
-  const options = { [balanceKey]: 0 - parseInt(amount) };
+  const options = { [balanceKey]: 0 - amount };
   const session = await getServerSession(authOptions);
 
   try {

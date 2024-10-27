@@ -64,7 +64,7 @@ const WalletsPage = async () => {
     <ProtectedRoute>
       <section className="px-8 min-h-screen w-full flex flex-col gap-8">
         <TotalBalance coinData={coinData} balance={balance} />
-        <AssetBalance />
+        <AssetBalance coinData={coinData} balance={balance} />
       </section>
     </ProtectedRoute>
   );

@@ -79,7 +79,7 @@ const TotalBalance = ({ coinData, balance }: TotalBalanceProps) => {
                 <DialogTitle>Deposit</DialogTitle>
               </DialogHeader>
               {/* Form */}
-              <DepositForm coinData={coinData} />
+              <DepositForm coinData={coinData} balance={balance} />
             </DialogContent>
           </Dialog>
         </div>

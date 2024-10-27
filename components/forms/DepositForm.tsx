@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -26,29 +28,51 @@ import {
 } from "@/components/ui/select";
 import { coinsIds } from "@/constants";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { DialogClose } from "../ui/dialog";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const DepositForm = ({ coinData }: { coinData: any }) => {
+const DepositForm = ({
+  coinData,
+  balance,
+}: {
+  coinData: any;
+  balance: any;
+}) => {
   // Get router
   const router = useRouter();
+  // Get coinId from URL
+  const searchParams = useSearchParams();
+  const coinFromUrl = searchParams.has("id")
+    ? searchParams.get("id")!
+    : "bitcoin";
+
   // Define form
   const form = useForm<z.infer<typeof depositSchema>>({
     resolver: zodResolver(depositSchema),
     defaultValues: {
-      coinId: "bitcoin",
+      coinId: coinFromUrl,
       amount: "0",
       paymentMethod: "VISA",
     },
   });
   // Define toast
   const { toast } = useToast();
+  // Watch variables
+  const amount = form.watch("amount");
+  const coinId = form.watch("coinId");
+  const price = coinData[coinId].market_data.current_price.usd;
+  const symbol = coinData[coinId].symbol;
+  const currentBalance = balance[coinId];
+  const amountInCoin = Number(amount) / price;
   // Define submit handler
   async function onSubmit(values: z.infer<typeof depositSchema>) {
+    const amountInCoin =
+      Number(values.amount) /
+      coinData[values.coinId].market_data.current_price.usd;
     const res = await deposit({
       coinId: values.coinId,
-      amount: Number(values.amount),
+      amount: amountInCoin,
       paymentMethod: values.paymentMethod,
     });
     if (res?.ok) {
@@ -63,6 +87,7 @@ const DepositForm = ({ coinData }: { coinData: any }) => {
       });
     }
   }
+
   return (
     <Form {...form}>
       <form
@@ -120,10 +145,29 @@ const DepositForm = ({ coinData }: { coinData: any }) => {
               <FormControl>
                 <Input placeholder="0" type="number" {...field} />
               </FormControl>
+              {parseInt(amount) === 0 && (
+                <FormDescription className="text-theme-red">
+                  Please enter a valid amount to deposit
+                </FormDescription>
+              )}
               <FormMessage />
             </FormItem>
           )}
         />
+        <div className="bg-pure-white dark:bg-hover-gray border-2 border-theme-gray/20 rounded-xl p-4 flex flex-row gap-32">
+          <div className="flex flex-col gap-2">
+            <h3 className="text-sm text-theme-gray/80">Transaction</h3>
+            <span className="font-semibold uppercase">
+              {amount} {"USD"}
+            </span>
+          </div>
+          <div className="flex flex-col gap-2">
+            <h3 className="text-sm text-theme-gray/80">Total Balance</h3>
+            <span className="font-semibold uppercase">
+              {currentBalance + amountInCoin} {symbol}
+            </span>
+          </div>
+        </div>
         <FormField
           control={form.control}
           name="paymentMethod"
@@ -138,7 +182,12 @@ const DepositForm = ({ coinData }: { coinData: any }) => {
           )}
         />
         <DialogClose>
-          <Button type="submit" variant={"default"} className="w-full">
+          <Button
+            type="submit"
+            disabled={Number(amount) === 0}
+            variant={"default"}
+            className="w-full"
+          >
             Buy Now
           </Button>
         </DialogClose>
