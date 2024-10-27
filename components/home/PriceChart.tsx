@@ -21,7 +21,7 @@ const PriceChart = ({ prices, isPositive }: PriceChartProps) => {
   }));
 
   return (
-    <ChartContainer config={chartConfig} className="min-h-full w-full">
+    <ChartContainer config={chartConfig} className="min-h-full w-full pt-10">
       <LineChart accessibilityLayer data={priceDataArray}>
         <CartesianGrid vertical={false} />
 

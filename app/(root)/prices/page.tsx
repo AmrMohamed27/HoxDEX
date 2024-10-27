@@ -1,12 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use server";
-
-import { coinObjects, coinsIds } from "@/constants";
+import PricesTable from "@/components/prices/PricesTable";
+import { coinsIds } from "@/constants";
 import redisClient from "@/lib/redisClient";
 import { getChartDataUrl, getCoinDataUrl } from "@/lib/utils";
-import CoinCard from "./CoinCard";
 
-const Prices = async () => {
+const PricesPage = async () => {
   // Function to fetch and cache coin prices
   const getCoinData = async (id: string) => {
     try {
@@ -29,7 +28,7 @@ const Prices = async () => {
       return data;
     } catch (error) {
       console.error(error);
-      return null;
+      return null; // Handle error case, e.g., return null or default value
     }
   };
   //   Function to fetch and cache coin market chart data
@@ -76,20 +75,17 @@ const Prices = async () => {
     return <p>An error occurred during fetching data</p>;
   }
   return (
-    <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-8 gap-4">
-      {Object.keys(coinObjects).map((id) => (
-        <CoinCard
-          key={id}
-          name={coinObjects[id].name}
-          symbol={coinObjects[id].symbol}
-          imageUrl={coinData[id].image.large}
-          price={coinData[id].market_data.current_price.usd}
-          change24h={coinData[id].market_data.price_change_percentage_24h}
-          chartData={chartData[id].prices}
-        />
-      ))}
-    </div>
+    <section className="px-8 min-h-screen w-full flex flex-col gap-8">
+      {/* Header */}
+      <h2 className="text-lg font-semibold">
+        Today&apos;s Cryptocurrency Prices
+      </h2>
+      {/* Table */}
+      <div className="">
+        <PricesTable coinData={coinData} chartData={chartData} />
+      </div>
+    </section>
   );
 };
 
-export default Prices;
+export default PricesPage;

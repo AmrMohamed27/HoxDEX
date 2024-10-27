@@ -25,16 +25,23 @@ const CoinCard = ({
               height={50}
               className="rounded-full"
             />
-            <div className="flex flex-col items-start gap-1">
-              <span>{name}</span>
-              <span className="text-sm text-theme-gray">{symbol}</span>
+            <div className="w-full flex flex-row justify-between">
+              <div className="flex flex-col items-start gap-1">
+                <span>{name}</span>
+                <span className="text-sm text-theme-gray">{symbol}</span>
+              </div>
+              <div className="flex items-center justify-center text-sm px-2 py-1 rounded-2xl bg-white dark:bg-background-gray">
+                <span className="text-theme-gray dark:hover-gray">24H</span>
+              </div>
             </div>
           </div>
         </CardTitle>
       </CardHeader>
       <CardContent>
         <div className="flex w-full justify-between flex-row">
-          <span className="font-semibold">{price} USD</span>
+          <span className="font-semibold">
+            {parseFloat(price.toFixed(5))} USD
+          </span>
           <div
             className={`${
               isPositive ? "text-theme-green" : "text-theme-red"
@@ -45,7 +52,7 @@ const CoinCard = ({
           </div>
         </div>
         <div className="flex items-center justify-center">
-          <div className="w-full min-h-[100px] mt-8 -mb-16">
+          <div className="w-full min-h-[100px] max-h-[200px] pt-8">
             <PriceChart prices={chartData} isPositive={isPositive} />
           </div>
         </div>

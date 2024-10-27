@@ -88,3 +88,9 @@ export interface PriceData {
   timestamp: string; // or Date, if you prefer to keep it as a Date object
   value: number;
 }
+
+export interface TotalBalanceProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  coinData: { [key: string]: any };
+  balance: { [key: string]: number };
+}

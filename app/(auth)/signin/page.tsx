@@ -36,8 +36,8 @@ const Page = () => {
         </h1>
         {/* Sign in with Google */}
         <Button
-          variant={"outline"}
-          className="w-full border-black mt-2 dark:bg-theme-blue dark:text-white dark:hover:bg-theme-blue/40"
+          variant={"default"}
+          className="w-full mt-2 "
           onClick={handleGoogleSignIn}
         >
           {loading ? (
