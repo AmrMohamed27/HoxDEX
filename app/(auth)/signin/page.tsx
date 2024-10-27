@@ -23,7 +23,7 @@ const Page = () => {
       <div className="bg-theme-blue xl:min-h-screen flex items-center justify-center">
         <Link href="/">
           <Image
-            src="assets/images/logo-white.svg"
+            src="assets/images/hox-logo-white.svg"
             width="800"
             height="140"
             alt="logo"
@@ -31,13 +31,11 @@ const Page = () => {
         </Link>
       </div>
       <div className="px-4 sm:px-24 md:px-48 lg:px-64 xl:px-8 py-8 flex items-center justify-center flex-col flex-1 gap-8 w-full">
-        <h1 className="text-2xl lg:text-4xl font-bold">
-          Sign in to OKX Crypto
-        </h1>
+        <h1 className="text-2xl lg:text-4xl font-bold">Sign in to HoxDEX</h1>
         {/* Sign in with Google */}
         <Button
-          variant={"outline"}
-          className="w-full border-black mt-2 dark:bg-theme-blue dark:text-white dark:hover:bg-theme-blue/40"
+          variant={"default"}
+          className="w-full mt-2 "
           onClick={handleGoogleSignIn}
         >
           {loading ? (

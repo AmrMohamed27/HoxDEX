@@ -121,7 +121,7 @@ const RegisterForm = () => {
             </FormItem>
           )}
         />
-        <Button type="submit" className="bg-theme-blue w-full">
+        <Button type="submit" variant={"default"} className="w-full">
           Sign Up
         </Button>
         {/* Separator */}
@@ -129,7 +129,7 @@ const RegisterForm = () => {
         {/* Signup */}
         <div className="flex items-center justify-center">
           already have an account?
-          <Link href="/signin" className="text-theme-blue ml-2">
+          <Link href="/signin" className="text-button-blue ml-2">
             Sign in to your account!
           </Link>
         </div>

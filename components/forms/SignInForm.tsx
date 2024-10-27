@@ -95,10 +95,7 @@ const SignInForm = () => {
             </FormItem>
           )}
         />
-        <Button
-          type="submit"
-          className="bg-theme-blue text-white w-full hover:bg-theme-blue/40"
-        >
+        <Button type="submit" variant={"default"} className="w-full ">
           Sign In
         </Button>
         {/* Separator */}
@@ -106,7 +103,7 @@ const SignInForm = () => {
         {/* Signup */}
         <div className="flex items-center justify-center">
           Don&apos;t have an account?
-          <Link href="/signup" className="text-theme-blue ml-2">
+          <Link href="/signup" className="text-button-blue ml-2">
             Sign up for free!
           </Link>
         </div>
