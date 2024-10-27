@@ -4,6 +4,8 @@ import Image from "next/image";
 import React from "react";
 import RegisterForm from "@/components/forms/RegisterForm";
 import { Link } from "react-transition-progress/next";
+import { Suspense } from "react";
+
 const Page = () => {
   return (
     <section className="flex flex-col xl:flex-row min-h-screen">
@@ -22,7 +24,9 @@ const Page = () => {
           Create an account for OKX Crypto
         </h1>
         {/* Form */}
-        <RegisterForm />
+        <Suspense fallback={<div>Loading...</div>}>
+          <RegisterForm />
+        </Suspense>
       </div>
     </section>
   );
