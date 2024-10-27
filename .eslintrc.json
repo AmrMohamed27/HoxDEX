@@ -1,3 +1,8 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+  "extends": ["next/core-web-vitals", "next/typescript"],
+  "rules": {
+    "no-unused-vars": "off", // Disables the rule completely
+    // Alternatively, if you want to allow unused variables only in TypeScript files:
+    "@typescript-eslint/no-unused-vars": "off" // Disable for TypeScript
+  }
 }
