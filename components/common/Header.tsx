@@ -1,6 +1,7 @@
 "use client";
 import { headerItems } from "@/constants";
-import { Link } from "react-transition-progress/next";import ThemeSwitch from "./ThemeSwitch";
+import { Link } from "react-transition-progress/next";
+import ThemeSwitch from "./ThemeSwitch";
 import { Button } from "../ui/button";
 import { Loader2 } from "lucide-react";
 import Logo from "./Logo";
@@ -9,12 +10,12 @@ import { Menu } from "lucide-react";
 import { useCurrentSession } from "@/hooks/useCurrentSession";
 import UserAvatar from "./UserAvatar";
 
-const Header = ({ toggleMobileMenu }: HeaderProps) => {
+const Header = ({ toggleMobileMenu, isCollapsed }: HeaderProps) => {
   const { status } = useCurrentSession();
   const showSession = () => {
     if (status === "authenticated") {
       return (
-        <div className="flex flex-row items-center gap-4">
+        <div className="flex flex-row items-center gap-4 z-50">
           <UserAvatar />
         </div>
       );
@@ -37,7 +38,11 @@ const Header = ({ toggleMobileMenu }: HeaderProps) => {
     }
   };
   return (
-    <header className="fixed top-0 z-50 bg-white dark:bg-background-gray/80 flex flex-row justify-between items-end px-4 md:px-8 py-4 md:py-8 w-full">
+    <header
+      className={`fixed top-0 z-50 bg-white/80 dark:bg-background-gray/80 flex flex-row justify-between items-end px-4 md:px-8 py-4 md:py-8 w-full ${
+        isCollapsed ? "xl:w-[90%] transition-all duration-300" : "xl:w-[80%]"
+      }`}
+    >
       {/* Desktop Links */}
       <div className="flex-row items-center gap-16 hidden xl:flex">
         {headerItems.map((item) => (
@@ -52,7 +57,7 @@ const Header = ({ toggleMobileMenu }: HeaderProps) => {
       <div className="flex items-center xl:hidden">
         <Logo />
       </div>
-      <div className="flex flex-row items-center gap-8">
+      <div className="flex flex-row items-center gap-8 z-50">
         {/* Dark Mode Toggle */}
         <ThemeSwitch />
         {/* Desktop Links */}

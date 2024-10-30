@@ -12,14 +12,13 @@ import { SidebarProps } from "@/types";
 import { MdClose as Close } from "react-icons/md";
 import UserAvatar from "./UserAvatar";
 
-const Sidebar = ({ isMobileMenuOpen, toggleMobileMenu }: SidebarProps) => {
+const Sidebar = ({
+  isMobileMenuOpen,
+  toggleMobileMenu,
+  isCollapsed,
+  toggleCollapse,
+}: SidebarProps) => {
   const pathname = usePathname(); // Get the current route
-  // collapse sidebar state
-  const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
-
-  const toggleCollapse = () => {
-    setIsCollapsed((prev) => !prev);
-  };
 
   return (
     <>

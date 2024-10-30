@@ -24,10 +24,13 @@ export interface LogoProps {
 export interface SidebarProps {
   isMobileMenuOpen: boolean;
   toggleMobileMenu: () => void;
+  isCollapsed: boolean;
+  toggleCollapse: () => void;
 }
 
 export interface HeaderProps {
   toggleMobileMenu: () => void;
+  isCollapsed: boolean;
 }
 
 export interface dropdownLinksType {

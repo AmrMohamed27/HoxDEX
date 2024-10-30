@@ -15,18 +15,24 @@ export default function RootLayout({
   const toggleMobileMenu = () => {
     setMobileMenuIsOpen((prev) => !prev);
   };
+  // collapse sidebar state
+  const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
+
+  const toggleCollapse = () => {
+    setIsCollapsed((prev) => !prev);
+  };
 
   return (
     <main className="flex flex-row justify-start bg-white dark:bg-background-gray">
       <Sidebar
         isMobileMenuOpen={mobileMenuIsOpen}
         toggleMobileMenu={toggleMobileMenu}
+        isCollapsed={isCollapsed}
+        toggleCollapse={toggleCollapse}
       />
       <div className="flex min-h-screen flex-col items-start justify-start w-full">
-        <Header toggleMobileMenu={toggleMobileMenu} />
-        <section className="pt-24">
-          {children}
-        </section>
+        <Header toggleMobileMenu={toggleMobileMenu} isCollapsed={isCollapsed} />
+        <section className="pt-24">{children}</section>
         <Footer />
       </div>
     </main>
