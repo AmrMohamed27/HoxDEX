@@ -82,8 +82,8 @@ const Sidebar = ({ isMobileMenuOpen, toggleMobileMenu }: SidebarProps) => {
                   <link.iconComponent.type
                     className={`text-3xl ${
                       isActive
-                        ? "text-theme-blue"
-                        : "text-theme-gray group-hover:text-theme-blue"
+                        ? "text-button-blue"
+                        : "text-theme-gray group-hover:text-button-blue"
                     }`}
                   />
                   <span

@@ -211,3 +211,36 @@ export const coinObjects: coinObjectList = {
     symbol: "SHIB",
   },
 };
+
+export const paymentCards = [
+  "method-a.svg",
+  "method-b.svg",
+  "method-c.svg",
+  "method-d.svg",
+  "method-e.svg",
+  "method-f.svg",
+];
+
+export const buyCards = [
+  {
+    id: 1,
+    title: "Transak",
+    imageUrl: "/assets/images/met-buy-a.svg",
+    description:
+      "Transak supports credit & debit cards, Apple Pay, MobiKwik, and bank transfers (depending on location) in 100+ countries.",
+  },
+  {
+    id: 2,
+    title: "Wyre",
+    imageUrl: "/assets/images/met-buy-b.svg",
+    description:
+      "Easy onboarding for purchases up to $ 1000. Fast interactive high limit purchase verification. Supports Debit/Credit Card, Apple Pay, Bank Transfers. Available in 100+ countries.",
+  },
+  {
+    id: 3,
+    title: "MoonPay",
+    imageUrl: "/assets/images/met-buy-c.svg",
+    description:
+      "MoonPay supports popular payment methods, including Visa, Mastercard, Apple / Google / Samsung Pay, and bank transfers in 145+ countries.",
+  },
+];

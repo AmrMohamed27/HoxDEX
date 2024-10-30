@@ -22,5 +22,5 @@ export function getCoinDataUrl(id: string): string {
 export function getChartDataUrl(id: string): string {
   const baseUrl = process.env.COINGEKKO_BASE_URL;
   const auth = process.env.COINGEKKO_AUTH;
-  return `${baseUrl}/coins/${id}/market_chart?${auth}&vs_currency=usd&days=1`;
+  return `${baseUrl}/coins/${id}/market_chart?${auth}&vs_currency=usd&days=365`;
 }

@@ -37,7 +37,7 @@ const Header = ({ toggleMobileMenu }: HeaderProps) => {
     }
   };
   return (
-    <header className="flex flex-row justify-between items-end px-4 md:px-8 py-4 md:py-8 w-full">
+    <header className="fixed top-0 z-50 bg-white dark:bg-background-gray/80 flex flex-row justify-between items-end px-4 md:px-8 py-4 md:py-8 w-full">
       {/* Desktop Links */}
       <div className="flex-row items-center gap-16 hidden xl:flex">
         {headerItems.map((item) => (

@@ -24,7 +24,9 @@ export default function RootLayout({
       />
       <div className="flex min-h-screen flex-col items-start justify-start w-full">
         <Header toggleMobileMenu={toggleMobileMenu} />
-        {children}
+        <section className="pt-24">
+          {children}
+        </section>
         <Footer />
       </div>
     </main>

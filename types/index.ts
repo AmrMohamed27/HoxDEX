@@ -94,3 +94,9 @@ export interface TotalBalanceProps {
   coinData: { [key: string]: any };
   balance: { [key: string]: number };
 }
+
+export interface BuyCardProps {
+  title: string;
+  imageUrl: string;
+  description: string;
+}

@@ -27,7 +27,7 @@ const CoinCard = ({
             />
             <div className="w-full flex flex-row justify-between">
               <div className="flex flex-col items-start gap-1">
-                <span>{name}</span>
+                <span className="truncate">{name}</span>
                 <span className="text-sm text-theme-gray">{symbol}</span>
               </div>
               <div className="flex items-center justify-center text-sm px-2 py-1 rounded-2xl bg-white dark:bg-background-gray">

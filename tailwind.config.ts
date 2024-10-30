@@ -15,7 +15,7 @@ const config: Config = {
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        "theme-blue": "#1f09ff",
+        "theme-blue": "#3772ff",
         "button-blue": "#3772ff",
         "button-light-gray": "#1f212814",
         "button-dark-gray": "#e4e4e414",
