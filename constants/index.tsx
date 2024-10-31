@@ -6,6 +6,7 @@ import { FaBitcoin as BuyIcon } from "react-icons/fa";
 import { CgProfile as Profile } from "react-icons/cg";
 import { FaSignOutAlt as SignOutIcon } from "react-icons/fa";
 import {
+  normalCard,
   coinObjectList,
   dropdownLinksType,
   FooterContentType,
@@ -13,6 +14,7 @@ import {
   heroSlidesType,
   heroTextType,
   sidebarLinksType,
+  feeTabsType,
 } from "@/types";
 import { signOut } from "next-auth/react";
 
@@ -127,7 +129,7 @@ export const footerContent: FooterContentType[] = [
     title: "ABOUT",
     content: [
       { element: "About Us", link: "/about-us" },
-      { element: "Fee Rate", link: "/fee-rate" },
+      { element: "Fee Rate", link: "/fees" },
       { element: "Careers", link: "/careers" },
       { element: "Blog", link: "/blog" },
     ],
@@ -161,6 +163,76 @@ export const footerContent: FooterContentType[] = [
       { element: "User Agreement", link: "/user-agreement" },
       { element: "Terms of Service", link: "/terms-of-service" },
     ],
+  },
+];
+export const aboutText: heroTextType = {
+  header: ["Crypto for", "the Culture"],
+  description:
+    "HoxDEX is not just a cryptocurrency exchange. It's a movement of people who believe that access to cryptocurrency products should be easy.",
+};
+
+export const aboutCards: normalCard[] = [
+  {
+    id: 1,
+    title: "40k+",
+    description: "Daily customers",
+  },
+  {
+    id: 2,
+    title: "8",
+    description: "Super products",
+  },
+  {
+    id: 3,
+    title: "30+",
+    description: "Team members",
+  },
+  {
+    id: 4,
+    title: "1",
+    description: "Ecosystem Token",
+  },
+];
+
+export const aboutTextBlocks: normalCard[] = [
+  {
+    id: 1,
+    title: "Our Vision",
+    description:
+      "HoxDEX exchange, established in 2022 in Singapore, is the cryptocurrency trading platform equipped with the high-tech blockchain technology. We believe this technology will prosper our lives and increase the value of assets. Our aim is to provide more customers with a better online cryptocurrency trading environment, and to create the wise investment environment.",
+  },
+  {
+    id: 2,
+    title: "Our Mission",
+    description:
+      "HoxDEX strives to protect our customers' assets and provide the best online trading service in the changing cryptocurrency market under our values - safety, trust, and creation. HoxDEX offers customer-oriented services. We also provide convenience and an optimal trading environment for cryptocurrency online trading services as a leader of the cryptocurrency market where our customers are satisfied with the services.",
+  },
+];
+
+export const firstTab: normalCard[] = [
+  {
+    id: 1,
+    title: "Maker:",
+    description:
+      "When you place an order that goes on the order book partially or fully such as a limit order, any subsequent trades coming from that order will be known as “makers”. These orders add volume to the order book, helping to “make the market”, and are therefore termed the “maker” for any subsequent trades.",
+  },
+  {
+    id: 2,
+    title: "Taker:",
+    description:
+      "When you place an order that trades immediately, either by filling partially or fully, before going on the order book, those trades will be “taker” trades. Trades from market orders are always Takers, as Market orders can never go on the order book. These trades are “taking” volume off of the order book, and are therefore called “takers”.",
+  },
+];
+
+export const feeTabs: feeTabsType[] = [
+  {
+    id: 1,
+    title: "Spot Trading Fee",
+    content: firstTab,
+  },
+  {
+    id: 2,
+    title: "Deposit & Withdrawal Fees",
   },
 ];
 

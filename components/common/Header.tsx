@@ -39,9 +39,7 @@ const Header = ({ toggleMobileMenu, isCollapsed }: HeaderProps) => {
   };
   return (
     <header
-      className={`fixed top-0 z-50 bg-white/80 dark:bg-background-gray/80 flex flex-row justify-between items-end px-4 md:px-8 py-4 md:py-8 w-full ${
-        isCollapsed ? "xl:w-[90%] transition-all duration-300" : "xl:w-[80%]"
-      }`}
+      className={`sticky top-0 z-50 bg-white/80 dark:bg-background-gray/80 flex flex-row justify-between items-end px-4 md:px-8 py-4 md:py-8 w-full`}
     >
       {/* Desktop Links */}
       <div className="flex-row items-center gap-16 hidden xl:flex">

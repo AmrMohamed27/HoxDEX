@@ -1,6 +1,6 @@
 import { BuyCardProps } from "@/types";
 import Image from "next/image";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 
 const BuyCard = ({ title, imageUrl, description }: BuyCardProps) => {
   return (

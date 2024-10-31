@@ -13,8 +13,8 @@ const alata = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "OKX Crypto",
-  description: "Your Future Cryptocurrency Platform",
+  title: "HoxDEX",
+  description: "Cryptocurrency Exchange",
 };
 
 export default function RootLayout({

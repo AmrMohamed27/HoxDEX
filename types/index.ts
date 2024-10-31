@@ -103,3 +103,15 @@ export interface BuyCardProps {
   imageUrl: string;
   description: string;
 }
+
+export interface normalCard {
+  id: number;
+  title: string;
+  description: string;
+}
+
+export interface feeTabsType {
+  id: number;
+  title: string;
+  content?: normalCard[];
+}

@@ -32,7 +32,7 @@ const Sidebar = ({
             : "-translate-x-full" // Off-screen when menu is closed
         }
         xl:translate-x-0
-        max-xl:fixed max-xl:top-0 max-xl:left-0 z-50 bg-inherit
+        max-xl:fixed max-xl:top-0 max-xl:left-0 z-[100] bg-inherit
         `}
       >
         {/* Desktop header */}
@@ -104,7 +104,7 @@ const Sidebar = ({
       {/* Overlay */}
       {isMobileMenuOpen && (
         <div
-          className="fixed inset-0 z-40 bg-black opacity-30 transition-opacity duration-300"
+          className="fixed inset-0 z-[70] bg-black opacity-30 transition-opacity duration-300"
           onClick={toggleMobileMenu} // Close the menu when the overlay is clicked
         />
       )}

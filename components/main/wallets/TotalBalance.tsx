@@ -3,8 +3,8 @@ import {
   BsArrowUpRightCircle as ArrowUpRight,
   BsArrowDownLeftCircle as ArrowDownLeft,
 } from "react-icons/bs";
-import { Button } from "../ui/button";
-import { Progress } from "../ui/progress";
+import { Button } from "../../ui/button";
+import { Progress } from "../../ui/progress";
 import Image from "next/image";
 import { TotalBalanceProps } from "@/types";
 import { useSearchParams } from "next/navigation";
@@ -16,8 +16,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-import DepositForm from "../forms/DepositForm";
-import WithdrawForm from "../forms/WithdrawForm";
+import DepositForm from "../../forms/DepositForm";
+import WithdrawForm from "../../forms/WithdrawForm";
 
 const TotalBalance = ({ coinData, balance }: TotalBalanceProps) => {
   // get coinId from URL

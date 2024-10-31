@@ -32,7 +32,7 @@ export default function RootLayout({
       />
       <div className="flex min-h-screen flex-col items-start justify-start w-full">
         <Header toggleMobileMenu={toggleMobileMenu} isCollapsed={isCollapsed} />
-        <section className="pt-24">{children}</section>
+        <section className="w-full">{children}</section>
         <Footer />
       </div>
     </main>

@@ -1,7 +1,7 @@
 import Image from "next/image";
-import PaymentCards from "../../../components/buy-crypto/PaymentCards";
+import PaymentCards from "../../../../components/main/buy-crypto/PaymentCards";
 import { buyCards } from "@/constants";
-import BuyCard from "@/components/buy-crypto/BuyCard";
+import BuyCard from "@/components/main/buy-crypto/BuyCard";
 
 const BuyCryptoPage = () => {
   return (

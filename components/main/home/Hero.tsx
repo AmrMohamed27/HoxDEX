@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { heroText } from "@/constants";
 import Slides from "./Slides";
-import CallToActionInput from "../common/CallToActionInput";
+import CallToActionInput from "../../common/CallToActionInput";
 
 const Hero = () => {
   return (
