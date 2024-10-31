@@ -15,6 +15,7 @@ import {
   heroTextType,
   sidebarLinksType,
   feeTabsType,
+  referralCardType,
 } from "@/types";
 import { signOut } from "next-auth/react";
 
@@ -130,8 +131,10 @@ export const footerContent: FooterContentType[] = [
     content: [
       { element: "About Us", link: "/about-us" },
       { element: "Fee Rate", link: "/fees" },
-      { element: "Careers", link: "/careers" },
-      { element: "Blog", link: "/blog" },
+      {
+        element: "Careers",
+        link: "https://docs.google.com/forms/d/1MWVL6ztsvlxUmt9k3mnKZ6VA9unHeh8Ux4PKx6LXK0I/viewform?edit_requested=true",
+      },
     ],
   },
   {
@@ -233,6 +236,30 @@ export const feeTabs: feeTabsType[] = [
   {
     id: 2,
     title: "Deposit & Withdrawal Fees",
+  },
+];
+
+export const referralCards: referralCardType[] = [
+  {
+    id: 1,
+    title: "Get Link",
+    imageUrl: "/assets/images/ref-a.jpg",
+    description:
+      "Sign up or log in to get your crypto referral link with the commission rebate rate.",
+  },
+  {
+    id: 2,
+    title: "Refer your friends",
+    imageUrl: "/assets/images/ref-b.jpg",
+    description:
+      "Share the referral link with your friends or on social media.",
+  },
+  {
+    id: 3,
+    title: "Start earning crypto!",
+    imageUrl: "/assets/images/ref-c.jpg",
+    description:
+      "Every time your friends successfully make a trade, you'll receive up to 40% commission!",
   },
 ];
 

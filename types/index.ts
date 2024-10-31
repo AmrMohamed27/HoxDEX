@@ -1,19 +1,24 @@
-import { Session } from "next-auth";
+export interface normalCard {
+  id: number;
+  title: string;
+  description: string;
+}
+
+export interface titleCard {
+  id: number;
+  title: string;
+}
 
 export interface AuthProviderProps {
   children?: React.ReactNode;
 }
 
-export interface sidebarLinksType {
-  id: number;
-  title: string;
+export interface sidebarLinksType extends titleCard {
   link: string;
   iconComponent: JSX.Element;
 }
 
-export interface headerItemsType {
-  id: number;
-  title: string;
+export interface headerItemsType extends titleCard {
   link: string;
 }
 
@@ -33,15 +38,6 @@ export interface HeaderProps {
   isCollapsed: boolean;
 }
 
-export interface dropdownLinksType {
-  id: number;
-  title: string;
-  description: string;
-  iconComponent: JSX.Element;
-  onClick?: () => void;
-  link: string;
-}
-
 export interface heroTextType {
   header: string[];
   description: string;
@@ -53,9 +49,7 @@ export interface heroSlidesType {
   alt: string;
 }
 
-export interface FooterContentType {
-  id: number;
-  title: string;
+export interface FooterContentType extends titleCard {
   content: { element: string; link: string }[];
 }
 
@@ -104,14 +98,15 @@ export interface BuyCardProps {
   description: string;
 }
 
-export interface normalCard {
-  id: number;
-  title: string;
-  description: string;
+export interface dropdownLinksType extends normalCard {
+  iconComponent: JSX.Element;
+  onClick?: () => void;
+  link: string;
+}
+export interface feeTabsType extends titleCard {
+  content?: normalCard[];
 }
 
-export interface feeTabsType {
-  id: number;
-  title: string;
-  content?: normalCard[];
+export interface referralCardType extends normalCard {
+  imageUrl: string;
 }
