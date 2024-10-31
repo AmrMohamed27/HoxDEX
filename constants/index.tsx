@@ -543,6 +543,7 @@ export const paymentCards = [
   "method-d.svg",
   "method-e.svg",
   "method-f.svg",
+  "method-g.png",
 ];
 
 export const buyCards = [
