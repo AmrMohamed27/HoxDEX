@@ -1,5 +1,3 @@
-"use client";
-
 import { z } from "zod";
 
 const methodEnum = z.enum(["VISA", "MasterCard"]);

@@ -15,7 +15,7 @@ const Steps = ({ content }: StepsProps) => {
             </span>
           </div>
           {/* Title */}
-          <h3 className="text-lg lg:text-xl font-semibold">{title}</h3>
+          <h3 className="text-lg lg:text-2xl font-semibold">{title}</h3>
           {/* Description */}
           <p className="text-theme-gray lg:max-w-[60%]">{description}</p>
         </div>

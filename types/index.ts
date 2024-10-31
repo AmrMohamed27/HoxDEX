@@ -142,3 +142,19 @@ export interface LegalType extends titleCard {
   title: string;
   url: string;
 }
+
+export interface vipTableCellsType {
+  id: number;
+  requirements: string;
+  makerFee: string;
+  takerFee: string;
+  limit: string;
+}
+
+export interface InfoHeroProps {
+  title: string;
+  imageUrl: string;
+  headerText: string;
+  descriptionText: string;
+  buttonText: string;
+}

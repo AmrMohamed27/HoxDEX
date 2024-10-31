@@ -18,6 +18,9 @@ import {
   referralCardType,
   AffiliateCard,
   LegalType,
+  titleCard,
+  vipTableCellsType,
+  contentCard,
 } from "@/types";
 import { signOut } from "next-auth/react";
 
@@ -69,6 +72,21 @@ export const headerItems: headerItemsType[] = [
     id: 3,
     title: "Buy Crypto",
     link: "/buy-crypto",
+  },
+  {
+    id: 4,
+    title: "Referral",
+    link: "/referral",
+  },
+  {
+    id: 5,
+    title: "Affiliate",
+    link: "/affiliate",
+  },
+  {
+    id: 6,
+    title: "VIP",
+    link: "/vip",
   },
 ];
 
@@ -327,6 +345,107 @@ export const affiliateSteps: normalCard[] = [
       "A permanent commission of 10% of fees from accounts you have referred will be deposited to your HoxDEX account. Easy.",
   },
 ];
+
+export const vipSteps: normalCard[] = [
+  { id: 1, title: "VIP Exclusive Funding Rate", description: "" },
+  { id: 2, title: "Exclusive Account Manager", description: "" },
+  {
+    id: 3,
+    title: "Exclusive Green Channel to Deposit and Withdraw",
+    description: "",
+  },
+];
+
+export const vipTableCells: vipTableCellsType[] = [
+  {
+    id: 5,
+    requirements: "Assets (USDT) : >3,000,000",
+    makerFee: "0%",
+    takerFee: "0%",
+    limit: "8,500,000 USDT",
+  },
+  {
+    id: 4,
+    requirements: "Assets (USDT) : >2,000,000",
+    makerFee: "0%",
+    takerFee: "0%",
+    limit: "8,500,000 USDT",
+  },
+  {
+    id: 3,
+    requirements: "Assets (USDT) : >1,000,000",
+    makerFee: "0%",
+    takerFee: "0%",
+    limit: "5,000,000 USDT",
+  },
+  {
+    id: 2,
+    requirements: "Assets (USDT) : >500,000",
+    makerFee: "0%",
+    takerFee: "0%",
+    limit: "5,000,000 USDT",
+  },
+  {
+    id: 1,
+    requirements: "Assets (USDT) : >50,000",
+    makerFee: "0%",
+    takerFee: "0%",
+    limit: "5,000,000 USDT",
+  },
+];
+
+export const vipRequirements: contentCard[] = [
+  {
+    id: 1,
+    content:
+      "30-Day Trading Volume: the volume accumulated from all trades master accounts from 0:00 (UTC+0) till the next day.",
+  },
+  {
+    id: 2,
+    content:
+      "Assets: all account assets including spot, USDC , USDT-M, and Earn assets in master accounts will be recorded at 0:00 till the next day (UTC+0), and will be converted based on coin-USDT conversion rate in that recording. Spot account contains available assets, locked-up assets and frozen assets; futures account contain frozen assets, excluding unrealized profit and losses.",
+  },
+  {
+    id: 3,
+    content:
+      "24-Hour Withdrawal Limit: HoxDEX will set a user's daily withdrawal limit based on their VIP tier. All coins will be calculated in BTC and the final amount after conversion should be less than the withdrawal limit at corresponding VIP tier. The withdrawal limit for users who fail to complete KYC verification is 5 BTC.",
+  },
+  {
+    id: 4,
+    content:
+      "If users' spot trading volume and assets meet different VIP tiers respectively, the users may enjoy VIP privileges of the highest one. If users meet any trading type's VIP tier requirement, all other trading type will be upgraded to that respective VIP tier. For example: if the user meet spot VIP 1 requirements, he will be upgraded to futures VIP 1 automatically.",
+  },
+  {
+    id: 5,
+    content:
+      "The VIP level will be automatically updated the next day at 1:00 (UTC+0). If the customer's trading behavior triggers risk control system, the platform will have the right to adjust the VIP level.",
+  },
+  {
+    id: 6,
+    content:
+      "The VIP system and requirements are only applicable to KYC verified users.",
+  },
+];
+
+export const vipCheckmarkArray: contentCard[] = [
+  {
+    id: 1,
+    content:
+      "Users who are VIP in other exchanges can be offered a VIP tier. Just head over to the VIP page and submit a screenshot of your last 30-days trading volume in the link to connect directly with account manager.",
+  },
+  {
+    id: 2,
+    content:
+      "An account manager will contact users within 24 hours who meet application requirements",
+  },
+  { id: 3, content: "Email vip@HoxDEX.com to get your questions answered" },
+];
+
+export const vipPlaceholder: string =
+  "Please provide your reasons for applying to be a HoxDEX VIP. Images are supported for relevant document submission.";
+
+export const imageUploadMessage: string =
+  "Image formats of only PNG, JPG, and JPEG will be supported. Maximum image size is 5MB";
 
 export const growthCheckmarkArray: normalCard[] = [
   {

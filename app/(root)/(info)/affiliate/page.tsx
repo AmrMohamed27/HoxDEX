@@ -10,42 +10,19 @@ import {
 } from "@/constants";
 import BenefitCard from "@/components/info/affiliate/BenefitCard";
 import Steps from "@/components/info/affiliate/Steps";
+import InfoHero from "@/components/common/InfoHero";
 
 const AffiliatePage = () => {
   return (
     <div className="px-8 flex flex-col w-full gap-8 lg:gap-20">
       {/* Hero */}
-      <div className="p-4 sm:p-8 xl:p-16 w-full flex flex-col md:flex-row-reverse md:items-center xl:items-start max-md:gap-8 md:justify-between relative rounded-3xl">
-        <Image
-          src="/assets/images/referral_banner.jpg"
-          alt="Affiliate Program"
-          width={1200}
-          height={350}
-          className="object-cover rounded-3xl w-full h-full absolute top-0 left-0 z-10"
-        />
-        {/* Image */}
-        <Image
-          src="/assets/images/affiliate_hero.png"
-          alt="Affiliate Program"
-          width={400}
-          height={400}
-          className="z-20"
-        />
-        {/* Content */}
-        <div className="flex flex-col gap-8 items-start z-20">
-          <h1 className="text-3xl sm:text-4xl xl:text-6xl font-semibold">
-            Affiliate Program
-          </h1>
-          <p>
-            Become an affiliate partner and receive an uncapped, permanent
-            commission starting at 40% on all trading fees paid by users you
-            have referred.
-          </p>
-          <Button variant={"default"} className="font-bold">
-            Become an affiliate
-          </Button>
-        </div>
-      </div>
+      <InfoHero
+        title={"Affiliate"}
+        imageUrl={"/assets/images/affiliate.png"}
+        headerText={"Affiliate Program"}
+        descriptionText="Become an affiliate partner and receive an uncapped, permanent commission starting at 40% on all trading fees paid by users you have referred."
+        buttonText="Become an affiliate"
+      />
       {/* Number Cards */}
       <NumberCards content={affiliateCards} />
       {/* Benefits */}
