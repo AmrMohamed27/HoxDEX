@@ -18,7 +18,7 @@ const AffiliatePage = () => {
       {/* Hero */}
       <InfoHero
         title={"Affiliate"}
-        imageUrl={"/assets/images/affiliate.png"}
+        imageUrl={"/assets/images/affiliate_hero.png"}
         headerText={"Affiliate Program"}
         descriptionText="Become an affiliate partner and receive an uncapped, permanent commission starting at 40% on all trading fees paid by users you have referred."
         buttonText="Become an affiliate"
