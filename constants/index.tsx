@@ -17,6 +17,7 @@ import {
   feeTabsType,
   referralCardType,
   AffiliateCard,
+  LegalType,
 } from "@/types";
 import { signOut } from "next-auth/react";
 
@@ -162,10 +163,10 @@ export const footerContent: FooterContentType[] = [
     id: 4,
     title: "LEGAL",
     content: [
-      { element: "Contact Us", link: "/contact" },
-      { element: "Privacy Policy", link: "/privacy-policy" },
-      { element: "User Agreement", link: "/user-agreement" },
-      { element: "Terms of Service", link: "/terms-of-service" },
+      { element: "AML&CFT", link: "/aml" },
+      { element: "Privacy Policy", link: "/policy" },
+      { element: "User Agreement", link: "/agreement" },
+      { element: "Terms of Service", link: "/terms" },
     ],
   },
 ];
@@ -451,5 +452,28 @@ export const buyCards = [
     imageUrl: "/assets/images/met-buy-c.svg",
     description:
       "MoonPay supports popular payment methods, including Visa, Mastercard, Apple / Google / Samsung Pay, and bank transfers in 145+ countries.",
+  },
+];
+
+export const legalLinks: LegalType[] = [
+  {
+    id: 1,
+    title: "Terms of Use",
+    url: "/terms",
+  },
+  {
+    id: 2,
+    title: "Privacy Policy",
+    url: "/policy",
+  },
+  {
+    id: 3,
+    title: "User Agreement",
+    url: "/agreement",
+  },
+  {
+    id: 4,
+    title: "AML&CFT Policy",
+    url: "/aml",
   },
 ];

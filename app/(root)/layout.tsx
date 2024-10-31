@@ -10,6 +10,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   // Responsive state
+  // TODO: Use redux instead of this state
   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState<boolean>(false);
 
   const toggleMobileMenu = () => {

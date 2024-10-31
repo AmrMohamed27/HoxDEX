@@ -9,6 +9,11 @@ export interface titleCard {
   title: string;
 }
 
+export interface contentCard {
+  id: number;
+  content: string;
+}
+
 export interface AuthProviderProps {
   children?: React.ReactNode;
 }
@@ -126,4 +131,14 @@ export interface BenefitCardProps {
 
 export interface StepsProps {
   content: normalCard[];
+}
+
+export interface TermsType extends titleCard {
+  paragraphs: string[];
+}
+
+export interface LegalType extends titleCard {
+  id: number;
+  title: string;
+  url: string;
 }
