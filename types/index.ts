@@ -105,8 +105,8 @@ export interface BuyCardProps {
 
 export interface dropdownLinksType extends normalCard {
   iconComponent: JSX.Element;
-  onClick?: () => void;
-  link: string;
+  dialog?: boolean;
+  link?: string;
 }
 export interface feeTabsType extends titleCard {
   content?: normalCard[];

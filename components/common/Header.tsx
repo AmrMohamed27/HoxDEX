@@ -42,7 +42,7 @@ const Header = ({ toggleMobileMenu, isCollapsed }: HeaderProps) => {
       className={`sticky top-0 z-50 bg-white/80 dark:bg-background-gray/80 flex flex-row justify-between items-end px-4 md:px-8 py-4 md:py-8 w-full`}
     >
       {/* Desktop Links */}
-      <div className="flex-row items-center gap-16 hidden xl:flex">
+      <div className="flex-row items-center gap-8 hidden xl:flex">
         {headerItems.map((item) => (
           <Link key={item.id} href={item.link}>
             <span className="text-theme-gray dark:hover:text-white hover:text-black font-semibold transition-colors duration-500">

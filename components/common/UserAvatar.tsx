@@ -9,8 +9,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useRouter } from "next/navigation";
-import { dropdownLinks } from "@/constants";
 import { useCurrentSession } from "@/hooks/useCurrentSession";
+import { signOut } from "next-auth/react";
+import Link from "next/link";
+import { CgProfile as ProfileIcon } from "react-icons/cg";
+import { FaSignOutAlt as SignOutIcon } from "react-icons/fa";
 
 const UserAvatar = () => {
   const { session } = useCurrentSession();
@@ -34,31 +37,43 @@ const UserAvatar = () => {
               {session?.user?.name}
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            {dropdownLinks.map((item) => (
-              <DropdownMenuItem
-                key={item.id}
-                className="hover:bg-theme-blue dark:hover:bg-hover-gray"
+
+            <DropdownMenuItem className="hover:bg-theme-blue dark:hover:bg-hover-gray">
+              <Link
+                href="/account"
+                className="flex flex-row gap-2 px-2 py-4 cursor-pointer"
               >
-                <div
-                  onClick={() => {
-                    if (item.onClick) item.onClick();
-                    router.push(item.link);
-                  }}
-                  className="flex flex-row gap-2 px-2 py-4 cursor-pointer"
-                >
-                  <div className="flex items-start justify-start">
-                    <item.iconComponent.type className="text-xl mt-1" />
-                  </div>
-                  <div className="flex flex-col gap-2 items-start justify-start">
-                    <h3 className="text-lg font-semibold">{item.title}</h3>
-                    <p className="text-sm text-theme-gray">
-                      {item.description}
-                    </p>
-                  </div>
+                <div className="flex items-start justify-start">
+                  <ProfileIcon className="text-xl mt-1" />
                 </div>
-                <DropdownMenuSeparator />
-              </DropdownMenuItem>
-            ))}
+                <div className="flex flex-col gap-2 items-start justify-start">
+                  <h3 className="text-lg font-semibold">Account</h3>
+                  <p className="text-sm text-theme-gray">
+                    Important account details
+                  </p>
+                </div>
+              </Link>
+              <DropdownMenuSeparator />
+            </DropdownMenuItem>
+            <DropdownMenuItem
+              className="hover:bg-theme-blue dark:hover:bg-hover-gray"
+              onClick={() => {
+                signOut();
+              }}
+            >
+              <div className="flex flex-row gap-2 px-2 py-4 cursor-pointer">
+                <div className="flex items-start justify-start">
+                  <SignOutIcon className="text-xl mt-1" />
+                </div>
+                <div className="flex flex-col gap-2 items-start justify-start">
+                  <h3 className="text-lg font-semibold">Sign out</h3>
+                  <p className="text-sm text-theme-gray">
+                    Log out of your account
+                  </p>
+                </div>
+              </div>
+              <DropdownMenuSeparator />
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </>

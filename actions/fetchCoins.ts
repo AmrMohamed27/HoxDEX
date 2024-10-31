@@ -74,6 +74,7 @@ export const fetchCoins = async () => {
 
   if (redisClient.isOpen) {
     await redisClient.quit();
+    console.log("Redis client disconnected");
   }
 
   return { coinData, chartData };

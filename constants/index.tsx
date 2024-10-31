@@ -22,8 +22,6 @@ import {
   vipTableCellsType,
   contentCard,
 } from "@/types";
-import { signOut } from "next-auth/react";
-
 export const sidebarLinks: sidebarLinksType[] = [
   {
     id: 1,
@@ -103,10 +101,7 @@ export const dropdownLinks: dropdownLinksType[] = [
     title: "Sign out",
     description: "Log out of your account",
     iconComponent: <SignOutIcon />,
-    onClick: () => {
-      signOut({ redirect: false });
-    },
-    link: "/",
+    dialog: true,
   },
 ];
 
