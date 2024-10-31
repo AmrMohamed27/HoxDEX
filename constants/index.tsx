@@ -16,6 +16,7 @@ import {
   sidebarLinksType,
   feeTabsType,
   referralCardType,
+  AffiliateCard,
 } from "@/types";
 import { signOut } from "next-auth/react";
 
@@ -260,6 +261,115 @@ export const referralCards: referralCardType[] = [
     imageUrl: "/assets/images/ref-c.jpg",
     description:
       "Every time your friends successfully make a trade, you'll receive up to 40% commission!",
+  },
+];
+
+export const affiliateCards: normalCard[] = [
+  { id: 1, title: "10%", description: "Permanent commission on trading fees." },
+  {
+    id: 2,
+    title: "10",
+    description: "Countries supported by our affiliate program.",
+  },
+  {
+    id: 3,
+    title: "∞",
+    description: "Earning potential from HoxDEX referrals!",
+  },
+];
+
+export const benefitsCheckmarkArray: normalCard[] = [
+  {
+    id: 1,
+    title: "Monetize your influence",
+    description:
+      "Get paid to share your passion for crypto. Share HoxDEX.com with your community to start earning.",
+  },
+  {
+    id: 2,
+    title: "Enjoy guaranteed payouts",
+    description:
+      "Earn $20 when your referrals complete $250 in trades within 30 days of completing account verification.",
+  },
+  {
+    id: 3,
+    title: "Maximize your earnings",
+    description:
+      "Active users keep our platform healthy. We offer additional earning opportunities to top Affiliates who bring in more active traders.",
+  },
+];
+
+export const benefits: AffiliateCard = {
+  id: 1,
+  title: "Benefits For You",
+  description: "Referring to HoxDEX is a win-win situation.",
+  checkmarkItems: benefitsCheckmarkArray,
+};
+
+export const affiliateSteps: normalCard[] = [
+  {
+    id: 1,
+    title: "Sign Up",
+    description:
+      "First, create a HoxDEX account. Try us out for yourself, enjoy our instant transfers and platform, and receive your affiliate link.",
+  },
+  {
+    id: 2,
+    title: "Share your link",
+    description:
+      "Share your link among your friends, on your website or on your social media pages. When they start trading, you start earning.",
+  },
+  {
+    id: 3,
+    title: "Receive Commission",
+    description:
+      "A permanent commission of 10% of fees from accounts you have referred will be deposited to your HoxDEX account. Easy.",
+  },
+];
+
+export const growthCheckmarkArray: normalCard[] = [
+  {
+    id: 1,
+    title: "Your referrals enjoy a trusted trading environment",
+    description: "",
+  },
+  {
+    id: 2,
+    title: "You generate a passive and permanent income",
+    description: "",
+  },
+  {
+    id: 3,
+    title: "The digital assets ecosystem grows",
+    description: "",
+  },
+];
+
+export const growth: AffiliateCard = {
+  id: 2,
+  title: "Drive the Growth of Digital Assets",
+  description: "Referring to HoxDEX is a win-win situation.",
+  checkmarkItems: growthCheckmarkArray,
+};
+
+export const affiliateFooting: normalCard[] = [
+  {
+    id: 1,
+    title: "Promotional Assets",
+    description:
+      "Use a wide range of promotional assets offered by HoxDEX, such as trading widgets, chart widgets, screenshots, banners, logos and content. Create a lasting impression on your visitors by using the assets provided by HoxDEX. Easy to implement, free to use.",
+  },
+  {
+    id: 2,
+    title: "Outstanding Reputation",
+    description:
+      "Confidently share your affiliate link with your friends, thanks to the good reputation of HoxDEX. Our transparent pricing, clear communication, easy to use platform, low fees, security measures and reliable bank relations allow you to share your affiliate link with full confidence.",
+  },
+  {
+    id: 3,
+    title: "Dedicated Support",
+    description:
+      "Access to committed support agents underpin the relationship between HoxDEX and its affiliates. This attitude results in fruitful cooperations in the form of special marketing actions, conversion optimization feedback, customized promotional content and rapid troubleshooting.",
   },
 ];
 

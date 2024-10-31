@@ -110,3 +110,20 @@ export interface feeTabsType extends titleCard {
 export interface referralCardType extends normalCard {
   imageUrl: string;
 }
+
+export interface NumberCardsProps {
+  content: normalCard[];
+}
+
+export interface AffiliateCard extends normalCard {
+  checkmarkItems: normalCard[];
+}
+
+export interface BenefitCardProps {
+  content: AffiliateCard;
+  imageUrl: string;
+}
+
+export interface StepsProps {
+  content: normalCard[];
+}

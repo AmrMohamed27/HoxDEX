@@ -1,12 +1,13 @@
 import AboutHero from "@/components/info/about/AboutHero";
 import NumberCards from "@/components/info/about/NumberCards";
 import { aboutTextBlocks } from "@/constants";
+import { aboutCards } from "@/constants";
 
 const AboutPage = () => {
   return (
     <div className="px-8 flex flex-col w-full gap-8 lg:gap-16">
       <AboutHero />
-      <NumberCards />
+      <NumberCards content={aboutCards} />
       {/* Text Blocks */}
       <div className="flex flex-col md:flex-row gap-6 mt-16">
         {aboutTextBlocks.map(({ id, title, description }) => (
