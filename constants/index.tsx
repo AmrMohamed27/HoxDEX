@@ -1,5 +1,4 @@
 import { FaHome as HomeIcon } from "react-icons/fa";
-import { FaExchangeAlt as ExchangeIcon } from "react-icons/fa";
 import { BsCurrencyExchange as PricesIcon } from "react-icons/bs";
 import { FaWallet as WalletIcon } from "react-icons/fa";
 import { FaBitcoin as BuyIcon } from "react-icons/fa";
@@ -31,12 +30,6 @@ export const sidebarLinks: sidebarLinksType[] = [
     iconComponent: <HomeIcon />,
   },
   {
-    id: 2,
-    title: "Exchange",
-    link: "/exchange",
-    iconComponent: <ExchangeIcon />,
-  },
-  {
     id: 3,
     title: "Prices",
     link: "/prices",
@@ -57,11 +50,6 @@ export const sidebarLinks: sidebarLinksType[] = [
 ];
 
 export const headerItems: headerItemsType[] = [
-  {
-    id: 1,
-    title: "Trade",
-    link: "/exchange",
-  },
   {
     id: 2,
     title: "Markets",
@@ -151,16 +139,6 @@ export const footerContent: FooterContentType[] = [
         element: "Careers",
         link: "https://docs.google.com/forms/d/1MWVL6ztsvlxUmt9k3mnKZ6VA9unHeh8Ux4PKx6LXK0I/viewform?edit_requested=true",
       },
-    ],
-  },
-  {
-    id: 2,
-    title: "TRADE",
-    content: [
-      { element: "BTC/USDT", link: "/exchange?pair=BTCUSDT" },
-      { element: "ETH/USDT", link: "/exchange?pair=ETHUSDT" },
-      { element: "BNB/USDT", link: "/exchange?pair=BNBUSDT" },
-      { element: "TRX/USDT", link: "/exchange?pair=TRXUSDT" },
     ],
   },
   {
