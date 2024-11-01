@@ -21,6 +21,7 @@ import {
   titleCard,
   vipTableCellsType,
   contentCard,
+  buyCardsType,
 } from "@/types";
 export const sidebarLinks: sidebarLinksType[] = [
   {
@@ -546,11 +547,12 @@ export const paymentCards = [
   "method-g.png",
 ];
 
-export const buyCards = [
+export const buyCards: buyCardsType[] = [
   {
     id: 1,
     title: "Transak",
     imageUrl: "/assets/images/met-buy-a.svg",
+    link: "https://global.transak.com/",
     description:
       "Transak supports credit & debit cards, Apple Pay, MobiKwik, and bank transfers (depending on location) in 100+ countries.",
   },
@@ -558,6 +560,7 @@ export const buyCards = [
     id: 2,
     title: "Wyre",
     imageUrl: "/assets/images/met-buy-b.svg",
+    link: "https://pay.sendwyre.com/",
     description:
       "Easy onboarding for purchases up to $ 1000. Fast interactive high limit purchase verification. Supports Debit/Credit Card, Apple Pay, Bank Transfers. Available in 100+ countries.",
   },
@@ -565,6 +568,7 @@ export const buyCards = [
     id: 3,
     title: "MoonPay",
     imageUrl: "/assets/images/met-buy-c.svg",
+    link: "http://buy.moonpay.com",
     description:
       "MoonPay supports popular payment methods, including Visa, Mastercard, Apple / Google / Samsung Pay, and bank transfers in 145+ countries.",
   },

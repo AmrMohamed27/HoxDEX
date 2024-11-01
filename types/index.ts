@@ -1,3 +1,4 @@
+import { buyCards } from "../constants/index";
 export interface normalCard {
   id: number;
   title: string;
@@ -114,6 +115,11 @@ export interface feeTabsType extends titleCard {
 
 export interface referralCardType extends normalCard {
   imageUrl: string;
+}
+
+export interface buyCardsType extends normalCard {
+  imageUrl: string;
+  link: string;
 }
 
 export interface NumberCardsProps {

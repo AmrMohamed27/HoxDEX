@@ -1,4 +1,3 @@
-import Image from "next/image";
 import PaymentCards from "../../../../components/main/buy-crypto/PaymentCards";
 import { buyCards } from "@/constants";
 import BuyCard from "@/components/main/buy-crypto/BuyCard";
@@ -19,13 +18,8 @@ const BuyCryptoPage = () => {
         </div>
         {/* Buy with Stuff */}
         <div className="flex flex-col gap-8 *:basis-full">
-          {buyCards.map(({ id, title, imageUrl, description }) => (
-            <BuyCard
-              title={title}
-              imageUrl={imageUrl}
-              description={description}
-              key={id}
-            />
+          {buyCards.map((card) => (
+            <BuyCard card={card} key={card.id} />
           ))}
         </div>
       </div>
