@@ -12,7 +12,11 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { depositSchema } from "@/schema/depositSchema";
+import {
+  depositSchema,
+  isValidCardNumber,
+  paymentMethods,
+} from "@/schema/depositSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -26,7 +30,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { coinsIds } from "@/constants";
+import { coinsIds, paymentMethodObjects } from "@/constants";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { DialogClose } from "../ui/dialog";
@@ -54,6 +58,7 @@ const DepositForm = ({
       coinId: coinFromUrl,
       amount: "0",
       paymentMethod: "VISA",
+      cardNumber: "",
     },
   });
   // Define toast
@@ -61,6 +66,8 @@ const DepositForm = ({
   // Watch variables
   const amount = form.watch("amount");
   const coinId = form.watch("coinId");
+  const cardNumber = form.watch("cardNumber");
+  // data from watch variables
   const price = coinData[coinId].market_data.current_price.usd;
   const symbol = coinData[coinId].symbol;
   const currentBalance = balance[coinId];
@@ -74,6 +81,7 @@ const DepositForm = ({
       coinId: values.coinId,
       amount: amountInCoin,
       paymentMethod: values.paymentMethod,
+      cardNumber: values.cardNumber,
     });
     if (res?.ok) {
       toast({
@@ -174,17 +182,68 @@ const DepositForm = ({
           render={({ field }) => (
             <FormItem>
               <FormLabel>Payment Method</FormLabel>
-              <FormControl>
-                <Input placeholder="VISA" {...field} />
-              </FormControl>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger className="w-full h-16">
+                    <SelectValue placeholder="Select a payment method" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectGroup>
+                    {paymentMethodObjects.map(({ id, method, imageUrl }) => (
+                      <SelectItem key={id} value={method}>
+                        <div className="flex flex-row gap-2 items-center">
+                          <div className="px-4 py-1 rounded bg-white">
+                            <Image
+                              src={imageUrl}
+                              alt={method}
+                              width={48}
+                              height={48}
+                              className=""
+                            />
+                          </div>
+                          <span className="font-semibold ">{method}</span>
+                        </div>
+                      </SelectItem>
+                    ))}
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
               <FormMessage />
             </FormItem>
           )}
         />
+        <FormField
+          control={form.control}
+          name="cardNumber"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Card Number</FormLabel>
+              <FormControl>
+                <Input
+                  type="text"
+                  placeholder="Enter your card number"
+                  {...field}
+                />
+              </FormControl>
+              {!isValidCardNumber(cardNumber) && (
+                <FormDescription className="text-theme-red">
+                  Please enter a valid card number
+                </FormDescription>
+              )}
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
         <DialogClose>
           <Button
             type="submit"
-            disabled={Number(amount) === 0}
+            disabled={
+              Number(amount) === 0 ||
+              !isValidCardNumber(cardNumber) ||
+              cardNumber.length === 0
+            }
             variant={"default"}
             className="w-full"
           >

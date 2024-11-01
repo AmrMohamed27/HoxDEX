@@ -592,3 +592,44 @@ export const legalLinks: LegalType[] = [
     url: "/aml",
   },
 ];
+
+export const validCardNumber = "4111111111111111";
+export const invalidCardNumber = "1234567812345678";
+
+export const paymentMethodObjects = [
+  {
+    id: 1,
+    method: "MasterCard",
+    imageUrl: "/assets/images/method-a.svg",
+  },
+  {
+    id: 2,
+    method: "VISA",
+    imageUrl: "/assets/images/method-b.svg",
+  },
+  {
+    id: 3,
+    method: "Paypal",
+    imageUrl: "/assets/images/method-c.svg",
+  },
+  {
+    id: 4,
+    method: "SEPA",
+    imageUrl: "/assets/images/method-d.svg",
+  },
+  {
+    id: 5,
+    method: "ApplePay",
+    imageUrl: "/assets/images/method-e.svg",
+  },
+  {
+    id: 6,
+    method: "GooglePay",
+    imageUrl: "/assets/images/method-f.svg",
+  },
+  {
+    id: 7,
+    method: "InstaPay",
+    imageUrl: "/assets/images/method-g.png",
+  },
+];
