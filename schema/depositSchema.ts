@@ -18,7 +18,7 @@ export const isValidCardNumber = (cardNumber: string) => {
   let shouldDouble = false;
 
   for (let i = cardNumber.length - 1; i >= 0; i--) {
-    let digit = parseInt(cardNumber[i]);
+    let digit = Number(cardNumber[i]);
 
     if (shouldDouble) {
       digit *= 2;
@@ -34,11 +34,29 @@ export const isValidCardNumber = (cardNumber: string) => {
 
 export const depositSchema = z.object({
   coinId: z.string().min(1),
-  amount: z.string().min(0),
+  amount: z.string().min(1),
   paymentMethod: methodEnum,
-  cardNumber: z
-    .string()
-    .min(12, { message: "Card number must be at least 12 digits" })
-    .max(19, { message: "Card number must be at most 19 digits" })
-    .refine(isValidCardNumber, { message: "Invalid card number" }),
+
+  // Common credit card fields for VISA and MasterCard
+  cardNumber: z.string().optional(),
+  cardholderName: z.string().optional(),
+  expirationDate: z.string().optional(),
+  cvv: z.string().optional(),
+  billingAddress: z.string().optional(),
+
+  // Paypal-specific field
+  paypalEmail: z.string().optional(),
+
+  // SEPA-specific fields
+  iban: z.string().optional(),
+  accountHolderName: z.string().optional(),
+  swiftBic: z.string().optional(),
+  country: z.string().optional(),
+
+  // InstaPay-specific fields, phoneNumber for ApplyPay too
+  mobilePhoneNumber: z.string().optional(),
+  instapayPin: z.string().optional(),
+
+  // GooglePay-specific fields
+  emailAddress: z.string().optional(),
 });

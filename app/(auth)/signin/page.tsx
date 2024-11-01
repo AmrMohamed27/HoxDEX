@@ -20,7 +20,7 @@ const Page = () => {
 
   return (
     <section className="flex flex-col xl:flex-row min-h-screen">
-      <div className="bg-theme-blue xl:min-h-screen flex items-center justify-center">
+      <div className="bg-theme-blue/80 xl:min-h-screen flex items-center justify-center">
         <Link href="/">
           <Image
             src="assets/images/hox-logo-white.svg"

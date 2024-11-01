@@ -164,3 +164,20 @@ export interface InfoHeroProps {
   descriptionText: string;
   buttonText: string;
 }
+
+export interface formFunctionProps {
+  paymentMethod: string;
+  cardNumber?: string;
+  cardholderName?: string;
+  expirationDate?: string;
+  cvv?: string;
+  billingAddress?: string;
+  paypalEmail?: string;
+  iban?: string;
+  accountHolderName?: string;
+  swiftBic?: string;
+  country?: string;
+  mobilePhoneNumber?: string;
+  instapayPin?: string;
+  emailAddress?: string;
+}

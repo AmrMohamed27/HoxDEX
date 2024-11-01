@@ -637,3 +637,67 @@ export const paymentMethodObjects = [
     imageUrl: "/assets/images/method-g.png",
   },
 ];
+
+const mockData = [
+  {
+    // VISA
+    coinId: "btc",
+    amount: "1000",
+    paymentMethod: "VISA",
+    cardNumber: "4111111111111111",
+    cardholderName: "John Doe",
+    expirationDate: "12/25",
+    cvv: "123",
+    billingAddress: "123 Main St, Anytown, USA",
+  },
+  {
+    // MasterCard
+    coinId: "eth",
+    amount: "500",
+    paymentMethod: "MasterCard",
+    cardNumber: "5555555555554444",
+    cardholderName: "Jane Smith",
+    expirationDate: "11/26",
+    cvv: "456",
+    billingAddress: "456 Elm St, Othertown, USA",
+  },
+  {
+    // Paypal
+    coinId: "ltc",
+    amount: "300",
+    paymentMethod: "Paypal",
+    paypalEmail: "user@example.com",
+  },
+  {
+    // SEPA
+    coinId: "btc",
+    amount: "2000",
+    paymentMethod: "SEPA",
+    iban: "DE89370400440532013000",
+    accountHolderName: "Hans Muller",
+    swiftBic: "DEUTDEFF",
+    country: "Germany",
+  },
+  {
+    // ApplePay
+    coinId: "eth",
+    amount: "750",
+    paymentMethod: "ApplePay",
+    // No additional fields needed for ApplePay; device handles verification
+  },
+  {
+    // GooglePay
+    coinId: "btc",
+    amount: "1200",
+    paymentMethod: "GooglePay",
+    // No additional fields needed for GooglePay; device handles verification
+  },
+  {
+    // InstaPay
+    coinId: "ltc",
+    amount: "250",
+    paymentMethod: "InstaPay",
+    mobilePhoneNumber: "1234567890",
+    instapayPin: "1234",
+  },
+];

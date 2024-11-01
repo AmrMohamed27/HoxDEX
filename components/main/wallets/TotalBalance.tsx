@@ -58,7 +58,7 @@ const TotalBalance = ({ coinData, balance }: TotalBalanceProps) => {
                 <span>Withdraw</span>
               </Button>
             </DialogTrigger>
-            <DialogContent>
+            <DialogContent className="max-h-[600px] overflow-scroll">
               <DialogHeader>
                 <DialogTitle>Withdraw</DialogTitle>
               </DialogHeader>
@@ -74,7 +74,7 @@ const TotalBalance = ({ coinData, balance }: TotalBalanceProps) => {
                 <span>Deposit</span>
               </Button>
             </DialogTrigger>
-            <DialogContent>
+            <DialogContent className="max-h-[600px] overflow-scroll">
               <DialogHeader>
                 <DialogTitle>Deposit</DialogTitle>
               </DialogHeader>

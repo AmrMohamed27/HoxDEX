@@ -8,7 +8,7 @@ import { getServerSession } from "next-auth";
 export const deposit = async (values: any) => {
   const { coinId, amount } = values;
   const balanceKey = `balance.${coinId}`;
-  const options = { [balanceKey]: parseInt(amount) };
+  const options = { [balanceKey]: Number(amount) };
   const session = await getServerSession(authOptions);
 
   try {

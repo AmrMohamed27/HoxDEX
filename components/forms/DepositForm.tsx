@@ -34,6 +34,8 @@ import { coinsIds, paymentMethodObjects } from "@/constants";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { DialogClose } from "../ui/dialog";
+import { Menu } from "lucide-react";
+import { formRegexAndBoolean } from "@/lib/utils";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const DepositForm = ({
@@ -58,7 +60,6 @@ const DepositForm = ({
       coinId: coinFromUrl,
       amount: "0",
       paymentMethod: "VISA",
-      cardNumber: "",
     },
   });
   // Define toast
@@ -66,12 +67,50 @@ const DepositForm = ({
   // Watch variables
   const amount = form.watch("amount");
   const coinId = form.watch("coinId");
+  const paymentMethod = form.watch("paymentMethod");
   const cardNumber = form.watch("cardNumber");
+  const cardholderName = form.watch("cardholderName");
+  const expirationDate = form.watch("expirationDate");
+  const cvv = form.watch("cvv");
+  const billingAddress = form.watch("billingAddress");
+  const paypalEmail = form.watch("paypalEmail");
+  const iban = form.watch("iban");
+  const accountHolderName = form.watch("accountHolderName");
+  const swiftBic = form.watch("swiftBic");
+  const country = form.watch("country");
+  const mobilePhoneNumber = form.watch("mobilePhoneNumber");
+  const instapayPin = form.watch("instapayPin");
+  const emailAddress = form.watch("emailAddress");
   // data from watch variables
   const price = coinData[coinId].market_data.current_price.usd;
   const symbol = coinData[coinId].symbol;
   const currentBalance = balance[coinId];
   const amountInCoin = Number(amount) / price;
+  // Validation
+  const {
+    expirationDateRegex,
+    swiftBicRegex,
+    mobilePhoneNumberRegex,
+    cvvRegex,
+    pinRegex,
+    ibanRegex,
+    goodToGo,
+  } = formRegexAndBoolean({
+    paymentMethod,
+    cardNumber,
+    cardholderName,
+    expirationDate,
+    cvv,
+    billingAddress,
+    paypalEmail,
+    iban,
+    accountHolderName,
+    swiftBic,
+    country,
+    mobilePhoneNumber,
+    instapayPin,
+    emailAddress,
+  });
   // Define submit handler
   async function onSubmit(values: z.infer<typeof depositSchema>) {
     const amountInCoin =
@@ -153,7 +192,7 @@ const DepositForm = ({
               <FormControl>
                 <Input placeholder="0" type="number" {...field} />
               </FormControl>
-              {parseInt(amount) === 0 && (
+              {Number(amount) === 0 && (
                 <FormDescription className="text-theme-red">
                   Please enter a valid amount to deposit
                 </FormDescription>
@@ -176,6 +215,7 @@ const DepositForm = ({
             </span>
           </div>
         </div>
+        {/* Payment Method */}
         <FormField
           control={form.control}
           name="paymentMethod"
@@ -213,37 +253,298 @@ const DepositForm = ({
             </FormItem>
           )}
         />
-        <FormField
-          control={form.control}
-          name="cardNumber"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Card Number</FormLabel>
-              <FormControl>
-                <Input
-                  type="text"
-                  placeholder="Enter your card number"
-                  {...field}
-                />
-              </FormControl>
-              {!isValidCardNumber(cardNumber) && (
-                <FormDescription className="text-theme-red">
-                  Please enter a valid card number
-                </FormDescription>
+        {paymentMethod === "VISA" || paymentMethod === "MasterCard" ? (
+          <>
+            <FormField
+              control={form.control}
+              name="cardNumber"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Card Number</FormLabel>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  {cardNumber && !isValidCardNumber(cardNumber) && (
+                    <FormDescription className="text-theme-red">
+                      Please enter a valid amount to deposit
+                    </FormDescription>
+                  )}
+                  <FormMessage />
+                </FormItem>
               )}
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
+            />
+            <FormField
+              control={form.control}
+              name="cardholderName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Card Holder Name</FormLabel>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  {cardholderName && cardholderName.length < 2 && (
+                    <FormDescription>
+                      Card Holder name must be at least one character long
+                    </FormDescription>
+                  )}
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="expirationDate"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Expiration Date</FormLabel>
+                  <FormControl>
+                    <Input placeholder="MM/YY" {...field} />
+                  </FormControl>
+                  {expirationDate &&
+                    !expirationDateRegex.test(expirationDate) && (
+                      <FormDescription>
+                        Expiration date must be in the format MM/YY
+                      </FormDescription>
+                    )}
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="cvv"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>CVV/CVC</FormLabel>
+                  <FormControl>
+                    <Input placeholder="000" {...field} />
+                  </FormControl>
+                  {cvv && !cvvRegex.test(cvv) && (
+                    <FormDescription>CVV must be 3-digits long</FormDescription>
+                  )}
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="billingAddress"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Billing Address</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Enter your billing address"
+                      {...field}
+                    />
+                  </FormControl>
+                  {billingAddress && billingAddress.length === 0 && (
+                    <FormDescription>
+                      Billing Address must not be empty.
+                    </FormDescription>
+                  )}
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </>
+        ) : paymentMethod === "Paypal" ? (
+          <>
+            <FormField
+              control={form.control}
+              name="paypalEmail"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>
+                    Email Address associated with your PayPal account
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Enter your email address"
+                      type="email"
+                      {...field}
+                    />
+                  </FormControl>
+                  {paypalEmail && paypalEmail.length === 0 && (
+                    <FormDescription>
+                      Email Address must not be empty.
+                    </FormDescription>
+                  )}
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </>
+        ) : paymentMethod === "SEPA" ? (
+          <>
+            <FormField
+              control={form.control}
+              name="iban"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>IBAN</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Enter your IBAN (International Bank Account Number)"
+                      {...field}
+                    />
+                  </FormControl>
+                  {iban && !ibanRegex.test(iban) && (
+                    <FormDescription>Invalid IBAN format.</FormDescription>
+                  )}
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="accountHolderName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Account Holder Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="John Doe" {...field} />
+                  </FormControl>
+                  {accountHolderName && accountHolderName.length === 0 && (
+                    <FormDescription>
+                      Account Holder Name must not be empty.
+                    </FormDescription>
+                  )}
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="swiftBic"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Swift/BIC</FormLabel>
+                  <FormControl>
+                    <Input placeholder="DEUTDEFF" {...field} />
+                  </FormControl>
+                  {swiftBic && !swiftBicRegex.test(swiftBic) && (
+                    <FormDescription>Invalid SWIFT/BIC format</FormDescription>
+                  )}
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="country"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Country</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Germany" {...field} />
+                  </FormControl>
+                  {country && country.length === 0 && (
+                    <FormDescription>
+                      Country must not be empty.
+                    </FormDescription>
+                  )}
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </>
+        ) : paymentMethod === "GooglePay" ? (
+          <>
+            <FormField
+              control={form.control}
+              name="emailAddress"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email Address</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="email"
+                      placeholder="Enter the email associated with your Google Pay account"
+                      {...field}
+                    />
+                  </FormControl>
+                  {emailAddress && emailAddress.length === 0 && (
+                    <FormDescription>
+                      Email Address must not be empty.
+                    </FormDescription>
+                  )}
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </>
+        ) : paymentMethod === "ApplePay" ? (
+          <>
+            <FormField
+              control={form.control}
+              name="mobilePhoneNumber"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Phone Number</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="tel"
+                      placeholder="Enter the phone number associated with your ApplePay account"
+                      {...field}
+                    />
+                  </FormControl>
+                  {mobilePhoneNumber &&
+                    !mobilePhoneNumberRegex.test(mobilePhoneNumber) && (
+                      <FormDescription>
+                        Phone Number is not valid.
+                      </FormDescription>
+                    )}
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </>
+        ) : paymentMethod === "InstaPay" ? (
+          <>
+            <FormField
+              control={form.control}
+              name="mobilePhoneNumber"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Phone Number</FormLabel>
+                  <FormControl>
+                    <Input type="tel" placeholder="+201234567890" {...field} />
+                  </FormControl>
+                  {mobilePhoneNumber &&
+                    !mobilePhoneNumberRegex.test(mobilePhoneNumber) && (
+                      <FormDescription>
+                        Phone Number is not valid.
+                      </FormDescription>
+                    )}
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="instapayPin"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>PIN</FormLabel>
+                  <FormControl>
+                    <Input placeholder="0000" {...field} />
+                  </FormControl>
+                  {instapayPin && !pinRegex.test(instapayPin) && (
+                    <FormDescription>PIN must be 4 digits</FormDescription>
+                  )}
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </>
+        ) : (
+          <p>Invalid payment method</p>
+        )}
         <DialogClose>
           <Button
             type="submit"
-            disabled={
-              Number(amount) === 0 ||
-              !isValidCardNumber(cardNumber) ||
-              cardNumber.length === 0
-            }
+            disabled={!goodToGo || Number(amount) === 0}
             variant={"default"}
             className="w-full"
           >
