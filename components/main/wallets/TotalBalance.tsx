@@ -27,6 +27,7 @@ const TotalBalance = ({ coinData, balance }: TotalBalanceProps) => {
   const price = coinData[coinId].market_data.current_price.usd;
   const symbol = coinData[coinId].symbol;
   const currentBalance = balance[coinId];
+  const currentBalanceString = currentBalance.toFixed(2);
   // calculate balance in USD
   const balanceInUSD = (price * currentBalance).toFixed(2);
   return (
@@ -38,7 +39,7 @@ const TotalBalance = ({ coinData, balance }: TotalBalanceProps) => {
           <h3 className="text-lg lg:text-xl font-semibold">Total Balance</h3>
           <div className="flex flex-row gap-2 items-end">
             <span className="text-xl lg:text-4xl font-semibold flex items-end">
-              {currentBalance}
+              {currentBalanceString}
             </span>
             <span className="text-white bg-theme-yellow px-4 py-1 rounded-full font-semibold uppercase">
               {symbol}
@@ -119,7 +120,7 @@ const TotalBalance = ({ coinData, balance }: TotalBalanceProps) => {
                 Asset Balance
               </h4>
               <span className="text-lg font-semibold uppercase">
-                {currentBalance} {symbol}
+                {currentBalanceString} {symbol}
               </span>
               <span className="text-theme-green">{balanceInUSD} USD</span>
             </div>
@@ -136,7 +137,7 @@ const TotalBalance = ({ coinData, balance }: TotalBalanceProps) => {
                 Exchange Balance
               </h4>
               <span className="text-lg font-semibold uppercase">
-                {currentBalance} {symbol}
+                {currentBalanceString} {symbol}
               </span>
               <span className="text-theme-green">{balanceInUSD} USD</span>
             </div>

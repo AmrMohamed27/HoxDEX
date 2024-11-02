@@ -83,22 +83,26 @@ const AssetBalance = ({ coinData, balance }: AssetBalanceProps) => {
               <TableCell className="max-sm:hidden">
                 <div className="flex flex-col gap-1 items-start">
                   <span className="uppercase text-lg font-semibold">
-                    {balance[id]}
+                    {balance[id].toFixed(2)}
                   </span>
                   <span className="text-sm font-semibold text-theme-gray">
                     {"$"}
-                    {balance[id] * coinData[id].market_data.current_price.usd}
+                    {(
+                      balance[id] * coinData[id].market_data.current_price.usd
+                    ).toFixed(2)}
                   </span>
                 </div>
               </TableCell>
               <TableCell className="max-sm:hidden sm:rounded-r-lg md:rounded-none">
                 <div className="flex flex-col gap-1 items-start">
                   <span className="uppercase text-lg font-semibold">
-                    {balance[id]}
+                    {balance[id].toFixed(2)}
                   </span>
                   <span className="text-sm font-semibold text-theme-gray">
                     {"$"}
-                    {balance[id] * coinData[id].market_data.current_price.usd}
+                    {(
+                      balance[id] * coinData[id].market_data.current_price.usd
+                    ).toFixed(2)}
                   </span>
                 </div>
               </TableCell>
