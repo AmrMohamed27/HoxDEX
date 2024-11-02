@@ -79,6 +79,7 @@ const WithdrawForm = ({
   const price = coinData[coinId].market_data.current_price.usd;
   const symbol = coinData[coinId].symbol;
   const currentBalance = balance[coinId];
+  const currentBalanceString = currentBalance.toFixed(2);
   // calculate balance in USD
   const balanceInUSD = (price * currentBalance).toFixed(2);
   const amountInCoin = Number(amount) / price;
@@ -220,7 +221,7 @@ const WithdrawForm = ({
         <div className="bg-background-green border-2 border-theme-green rounded-xl p-4 flex flex-col gap-2">
           <h3 className="text-sm text-theme-green">Available Balance</h3>
           <span className="uppercase text-lg font-semibold">
-            {currentBalance} {symbol}
+            {currentBalanceString} {symbol}
           </span>
           <span className="text-sm font-semibold">{balanceInUSD} USD</span>
         </div>
