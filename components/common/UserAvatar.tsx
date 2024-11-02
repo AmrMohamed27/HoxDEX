@@ -14,6 +14,7 @@ import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { CgProfile as ProfileIcon } from "react-icons/cg";
 import { FaSignOutAlt as SignOutIcon } from "react-icons/fa";
+import Image from "next/image";
 
 const UserAvatar = () => {
   const { session } = useCurrentSession();
@@ -29,7 +30,15 @@ const UserAvatar = () => {
           <DropdownMenuTrigger>
             <Avatar className="cursor-pointer">
               <AvatarImage src={session.user.image} />
-              <AvatarFallback>UN</AvatarFallback>
+              <AvatarFallback>
+                <Image
+                  src="/assets/images/avatar.png"
+                  alt="Avatar"
+                  width={40}
+                  height={40}
+                  className="rounded-full"
+                />
+              </AvatarFallback>
             </Avatar>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="rounded-lg bg-white dark:bg-background-gray  border-2 border-theme-gray/20 mt-2 mr-8 z-[60] group">
