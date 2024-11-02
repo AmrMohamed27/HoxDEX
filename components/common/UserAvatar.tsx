@@ -10,14 +10,14 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useRouter } from "next/navigation";
 import { useCurrentSession } from "@/hooks/useCurrentSession";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { CgProfile as ProfileIcon } from "react-icons/cg";
 import { FaSignOutAlt as SignOutIcon } from "react-icons/fa";
 import Image from "next/image";
 
 const UserAvatar = () => {
-  const { session } = useCurrentSession();
+  const { data: session } = useSession();
   const router = useRouter();
 
   return (
@@ -29,7 +29,10 @@ const UserAvatar = () => {
         <DropdownMenu>
           <DropdownMenuTrigger>
             <Avatar className="cursor-pointer">
-              <AvatarImage src={session.user.image} />
+              <AvatarImage
+                src={session.user.image}
+                referrerPolicy="no-referrer"
+              />
               <AvatarFallback>
                 <Image
                   src="/assets/images/avatar.png"

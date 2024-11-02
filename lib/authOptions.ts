@@ -52,4 +52,35 @@ export const authOptions: NextAuthOptions = {
   session: {
     strategy: "jwt",
   },
+  callbacks: {
+    async jwt({ token, user, account }) {
+      // When user data is updated, attach the updated data to the token
+      if (user) {
+        token.id = user.id;
+        token.name = user.name;
+        token.email = user.email;
+        token.picture = user.image;
+      }
+      if (account) {
+        token.provider = account.provider;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      // Fetch the latest user data from the database
+      await dbConnect();
+      const user = await User.findOne({ email: token.email });
+
+      if (user) {
+        // Add updated user data to the session
+        session.user = {
+          name: user.name,
+          email: user.email,
+          image: user.image ?? token.picture,
+        };
+      }
+      session.provider = token.provider;
+      return session;
+    },
+  },
 };
