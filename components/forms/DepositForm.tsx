@@ -210,7 +210,7 @@ const DepositForm = ({
           <div className="flex flex-col gap-2">
             <h3 className="text-sm text-theme-gray/80">Total Balance</h3>
             <span className="font-semibold uppercase">
-              {currentBalance + amountInCoin} {symbol}
+              {(currentBalance + amountInCoin).toFixed(4)} {symbol}
             </span>
           </div>
         </div>
