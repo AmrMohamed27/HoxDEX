@@ -178,6 +178,5 @@ export interface formFunctionProps {
   swiftBic?: string;
   country?: string;
   mobilePhoneNumber?: string;
-  instapayPin?: string;
   emailAddress?: string;
 }

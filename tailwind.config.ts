@@ -31,7 +31,6 @@ const config: Config = {
         "theme-red": "#E32D2D",
         "theme-yellow": "#ff9f38",
         "theme-purple": "#6C5DD3",
-        "instapay-purple": "#4c096e",
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",

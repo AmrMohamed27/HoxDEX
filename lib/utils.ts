@@ -40,7 +40,6 @@ export function formRegexAndBoolean({
   swiftBic,
   country,
   mobilePhoneNumber,
-  instapayPin,
   emailAddress,
 }: formFunctionProps) {
   const expirationDateRegex = /^(0[1-9]|1[0-2])\/[0-9]{2}$/;
@@ -79,12 +78,6 @@ export function formRegexAndBoolean({
         mobilePhoneNumberRegex.test(mobilePhoneNumber)
       : paymentMethod === "GooglePay"
       ? emailAddress !== undefined && emailAddress.length > 0
-      : paymentMethod === "InstaPay"
-      ? mobilePhoneNumber !== undefined &&
-        mobilePhoneNumber.length >= 10 &&
-        mobilePhoneNumberRegex.test(mobilePhoneNumber) &&
-        instapayPin !== undefined &&
-        pinRegex.test(instapayPin)
       : false;
 
   return {

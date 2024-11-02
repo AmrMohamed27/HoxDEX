@@ -7,7 +7,6 @@ export const paymentMethods = [
   "SEPA",
   "ApplePay",
   "GooglePay",
-  "InstaPay",
 ] as const;
 export const methodEnum = z.enum(paymentMethods);
 type methodEnum = z.infer<typeof methodEnum>;
@@ -52,10 +51,6 @@ export const depositSchema = z.object({
   accountHolderName: z.string().optional(),
   swiftBic: z.string().optional(),
   country: z.string().optional(),
-
-  // InstaPay-specific fields, phoneNumber for ApplyPay too
-  mobilePhoneNumber: z.string().optional(),
-  instapayPin: z.string().optional(),
 
   // GooglePay-specific fields
   emailAddress: z.string().optional(),

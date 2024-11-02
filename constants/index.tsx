@@ -522,7 +522,6 @@ export const paymentCards = [
   "method-d.svg",
   "method-e.svg",
   "method-f.svg",
-  "method-g.png",
 ];
 
 export const buyCards: buyCardsType[] = [
@@ -609,11 +608,6 @@ export const paymentMethodObjects = [
     method: "GooglePay",
     imageUrl: "/assets/images/method-f.svg",
   },
-  {
-    id: 7,
-    method: "InstaPay",
-    imageUrl: "/assets/images/method-g.png",
-  },
 ];
 
 const mockData = [
@@ -669,13 +663,5 @@ const mockData = [
     amount: "1200",
     paymentMethod: "GooglePay",
     // No additional fields needed for GooglePay; device handles verification
-  },
-  {
-    // InstaPay
-    coinId: "ltc",
-    amount: "250",
-    paymentMethod: "InstaPay",
-    mobilePhoneNumber: "1234567890",
-    instapayPin: "1234",
   },
 ];

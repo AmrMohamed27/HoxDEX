@@ -74,7 +74,6 @@ const WithdrawForm = ({
   const swiftBic = form.watch("swiftBic");
   const country = form.watch("country");
   const mobilePhoneNumber = form.watch("mobilePhoneNumber");
-  const instapayPin = form.watch("instapayPin");
   const emailAddress = form.watch("emailAddress");
   // get coin data from props
   const price = coinData[coinId].market_data.current_price.usd;
@@ -105,7 +104,6 @@ const WithdrawForm = ({
     swiftBic,
     country,
     mobilePhoneNumber,
-    instapayPin,
     emailAddress,
   });
   // Define submit handler
@@ -506,44 +504,6 @@ const WithdrawForm = ({
                         Phone Number is not valid.
                       </FormDescription>
                     )}
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </>
-        ) : paymentMethod === "InstaPay" ? (
-          <>
-            <FormField
-              control={form.control}
-              name="mobilePhoneNumber"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Phone Number</FormLabel>
-                  <FormControl>
-                    <Input type="tel" placeholder="+201234567890" {...field} />
-                  </FormControl>
-                  {mobilePhoneNumber &&
-                    !mobilePhoneNumberRegex.test(mobilePhoneNumber) && (
-                      <FormDescription>
-                        Phone Number is not valid.
-                      </FormDescription>
-                    )}
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="instapayPin"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>PIN</FormLabel>
-                  <FormControl>
-                    <Input placeholder="0000" {...field} />
-                  </FormControl>
-                  {instapayPin && !pinRegex.test(instapayPin) && (
-                    <FormDescription>PIN must be 4 digits</FormDescription>
-                  )}
                   <FormMessage />
                 </FormItem>
               )}
