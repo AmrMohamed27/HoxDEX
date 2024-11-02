@@ -52,6 +52,9 @@ export const depositSchema = z.object({
   swiftBic: z.string().optional(),
   country: z.string().optional(),
 
+  // ApplyPay-specific fields
+  mobilePhoneNumber: z.string().optional(),
+
   // GooglePay-specific fields
   emailAddress: z.string().optional(),
 });

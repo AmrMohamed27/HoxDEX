@@ -32,6 +32,9 @@ export const withdrawSchema = z.object({
   swiftBic: z.string().optional(),
   country: z.string().optional(),
 
+  // InstaPay-specific fields, phoneNumber for ApplyPay too
+  mobilePhoneNumber: z.string().optional(),
+
   // GooglePay-specific fields
   emailAddress: z.string().optional(),
 });
