@@ -476,6 +476,10 @@ export const coinsIds: string[] = [
   "pepe",
   "catizen",
   "shiba-inu",
+  "beefy-finance",
+  "gnosis",
+  "aave",
+  "litecoin",
 ];
 
 export const coinsIdsString = coinsIds.join(",");
@@ -513,6 +517,19 @@ export const coinObjects: coinObjectList = {
     name: "Shiba Inu",
     symbol: "SHIB",
   },
+  "beefy-finance": {
+    name: "Beefy",
+    symbol: "BIFI",
+  },
+  gnosis: {
+    name: "Gnosis",
+    symbol: "GNO",
+  },
+  aave: {
+    name: "Aave",
+    symbol: "AAVE",
+  },
+  litecoin: { name: "Litecoin", symbol: "LTC" },
 };
 
 export const paymentCards = [

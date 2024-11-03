@@ -2,7 +2,6 @@
 import { sidebarLinks } from "@/constants";
 import { Link } from "react-transition-progress/next";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
 import {
   MdKeyboardDoubleArrowLeft as LeftArrows,
   MdKeyboardDoubleArrowRight as RightArrows,
@@ -11,6 +10,8 @@ import Logo from "./Logo";
 import { SidebarProps } from "@/types";
 import { MdClose as Close } from "react-icons/md";
 import UserAvatar from "./UserAvatar";
+import { useCurrentSession } from "@/hooks/useCurrentSession";
+import { Button } from "@/components/ui/button";
 
 const Sidebar = ({
   isMobileMenuOpen,
@@ -19,6 +20,7 @@ const Sidebar = ({
   toggleCollapse,
 }: SidebarProps) => {
   const pathname = usePathname(); // Get the current route
+  const { status } = useCurrentSession();
 
   return (
     <>
@@ -32,7 +34,7 @@ const Sidebar = ({
             : "-translate-x-full" // Off-screen when menu is closed
         }
         xl:translate-x-0
-        max-xl:fixed max-xl:top-0 max-xl:left-0 z-[100] bg-inherit
+        max-xl:fixed max-xl:top-0 max-xl:left-0 z-40 bg-inherit
         `}
       >
         {/* Desktop header */}
@@ -55,8 +57,12 @@ const Sidebar = ({
           </button>
         </div>
         {/* Mobile Header */}
-        <div className={`flex xl:hidden items-center flex-row justify-between`}>
-          <UserAvatar />
+        <div
+          className={`flex xl:hidden flex-row w-full items-center ${
+            status === "authenticated" ? "justify-between" : "justify-end"
+          }`}
+        >
+          {status === "authenticated" && <UserAvatar />}
           <Close
             className="cursor-pointer text-3xl hover:text-theme-blue "
             onClick={toggleMobileMenu}
@@ -98,13 +104,26 @@ const Sidebar = ({
               </Link>
             );
           })}
+          {status !== "authenticated" && status !== "loading" && (
+            <div className="mt-16 flex flex-col items-center gap-8">
+              <Button
+                variant={"secondary"}
+                className="w-full font-bold text-lg"
+              >
+                <Link href="/signin">Sign in</Link>
+              </Button>
+              <Button variant={"default"}>
+                <Link href="/signup">Create an Account</Link>
+              </Button>
+            </div>
+          )}
         </div>
       </div>
 
       {/* Overlay */}
       {isMobileMenuOpen && (
         <div
-          className="fixed inset-0 z-[70] bg-black opacity-30 transition-opacity duration-300"
+          className="fixed inset-0 z-30 bg-black opacity-30 transition-opacity duration-300"
           onClick={toggleMobileMenu} // Close the menu when the overlay is clicked
         />
       )}
