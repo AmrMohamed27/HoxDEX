@@ -2,7 +2,8 @@
 import Footer from "@/components/common/Footer";
 import Header from "@/components/common/Header";
 import Sidebar from "@/components/common/Sidebar";
-import { useState } from "react";
+import { Suspense, useState } from "react";
+import Loading from "./loading";
 
 export default function RootLayout({
   children,
@@ -33,7 +34,9 @@ export default function RootLayout({
       />
       <div className="flex min-h-screen flex-col items-start justify-start w-full">
         <Header toggleMobileMenu={toggleMobileMenu} isCollapsed={isCollapsed} />
-        <section className="w-full">{children}</section>
+        <Suspense fallback={<Loading />}>
+          <section className="w-full">{children}</section>
+        </Suspense>
         <Footer />
       </div>
     </main>
