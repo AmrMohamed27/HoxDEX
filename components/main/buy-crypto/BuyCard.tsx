@@ -9,7 +9,7 @@ const BuyCard = ({ card }: { card: buyCardsType }) => {
     <Link
       href={link}
       target="_blank"
-      className="flex flex-row bg-pure-white dark:bg-hover-gray rounded-2xl p-6 gap-12"
+      className="flex flex-col sm:flex-row bg-pure-white dark:bg-hover-gray rounded-2xl p-6 gap-12"
     >
       {/* Image and button */}
       <div className="flex flex-col gap-4">

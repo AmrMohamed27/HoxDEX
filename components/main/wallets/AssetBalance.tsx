@@ -59,13 +59,13 @@ const AssetBalance = ({ coinData, balance }: AssetBalanceProps) => {
                   {coinData[id].symbol}
                 </span>
               </TableCell>
-              <TableCell>
+              <TableCell className="max-lg:hidden">
                 <div
                   className={`${
                     coinData[id].market_data.price_change_percentage_24h >= 0
                       ? "text-theme-green"
                       : "text-theme-red"
-                  } flex flex-row items-center gap-1 text-sm`}
+                  } flex flex-row items-center gap-1 text-sm max-sm:hidden`}
                 >
                   {coinData[id].market_data.price_change_percentage_24h >= 0 ? (
                     <ArrowUp size={18} />
@@ -93,7 +93,7 @@ const AssetBalance = ({ coinData, balance }: AssetBalanceProps) => {
                   </span>
                 </div>
               </TableCell>
-              <TableCell className="max-sm:hidden sm:rounded-r-lg md:rounded-none">
+              <TableCell className="rounded-r-lg">
                 <div className="flex flex-col gap-1 items-start">
                   <span className="uppercase text-lg font-semibold">
                     {balance[id].toFixed(2)}
