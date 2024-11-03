@@ -22,7 +22,7 @@ export const fetchCoins = async () => {
       }
       const data = await response.json();
       await redisClient.set(`coinData-${id}`, JSON.stringify(data), {
-        EX: 86400,
+        EX: 3600,
       });
       return data;
     } catch (error) {
@@ -47,7 +47,7 @@ export const fetchCoins = async () => {
       }
       const data = await response.json();
       await redisClient.set(`chartData-${id}`, JSON.stringify(data), {
-        EX: 86400,
+        EX: 3600,
       });
       return data;
     } catch (error) {
