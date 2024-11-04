@@ -11,10 +11,12 @@ export const fetchCoins = async () => {
       if (!redisClient.isOpen) await redisClient.connect();
       const cachedData = await redisClient.get(`coinData-${id}`);
       if (cachedData) {
+        console.log(`Serving from cache for ${id}`);
         return JSON.parse(cachedData);
       }
+      console.log(`Fetching fresh data for ${id}`);
       const url = getCoinDataUrl(id);
-      const response = await fetch(url);
+      const response = await fetch(url, { cache: "no-store" });
       if (!response.ok) {
         throw new Error(
           `Error fetching data for ${id}: ${response.statusText}`
@@ -36,10 +38,12 @@ export const fetchCoins = async () => {
       if (!redisClient.isOpen) await redisClient.connect();
       const cachedData = await redisClient.get(`chartData-${id}`);
       if (cachedData) {
+        console.log(`Serving from cache for ${id}`);
         return JSON.parse(cachedData);
       }
+      console.log(`Fetching fresh data for ${id}`);
       const url = getChartDataUrl(id);
-      const response = await fetch(url);
+      const response = await fetch(url, { cache: "no-store" });
       if (!response.ok) {
         throw new Error(
           `Error fetching data for ${id}: ${response.statusText}`
