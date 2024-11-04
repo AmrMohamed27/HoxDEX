@@ -30,12 +30,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { coinsIds, paymentMethodObjects } from "@/constants";
+import { coinObjects, coinsIds, paymentMethodObjects } from "@/constants";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { DialogClose } from "../ui/dialog";
 import { Menu } from "lucide-react";
-import { formRegexAndBoolean } from "@/lib/utils";
+import { formRegexAndBoolean, getStarredEmail } from "@/lib/utils";
+import { useSession } from "next-auth/react";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const DepositForm = ({
@@ -53,6 +54,8 @@ const DepositForm = ({
     ? searchParams.get("id")!
     : "bitcoin";
 
+  // Get session
+  const { data: session } = useSession();
   // Define form
   const form = useForm<z.infer<typeof depositSchema>>({
     resolver: zodResolver(depositSchema),
@@ -122,8 +125,15 @@ const DepositForm = ({
       cardNumber: values.cardNumber,
     });
     if (res?.ok) {
+      const starredEmail = getStarredEmail(session?.user?.email);
       toast({
         title: "Deposit Successful",
+        description: (
+          <span className="text-lg">
+            {amountInCoin} {coinObjects[values.coinId].name} deposited in{" "}
+            {starredEmail}&apos;s wallet
+          </span>
+        ),
       });
       router.refresh();
     } else {

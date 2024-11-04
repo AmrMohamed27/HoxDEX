@@ -26,12 +26,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { coinsIds, paymentMethodObjects } from "@/constants";
+import { coinObjects, coinsIds, paymentMethodObjects } from "@/constants";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { DialogClose } from "../ui/dialog";
-import { formRegexAndBoolean } from "@/lib/utils";
+import { formRegexAndBoolean, getStarredEmail } from "@/lib/utils";
 import { isValidCardNumber } from "@/schema/depositSchema";
+import { useSession } from "next-auth/react";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const WithdrawForm = ({
@@ -57,6 +58,8 @@ const WithdrawForm = ({
       paymentMethod: "VISA",
     },
   });
+  // Get session
+  const { data: session } = useSession();
   // Define toast
   const { toast } = useToast();
   // Watch variables
@@ -117,8 +120,15 @@ const WithdrawForm = ({
       paymentMethod: values.paymentMethod,
     });
     if (res?.ok) {
+      const starredEmail = getStarredEmail(session?.user?.email);
       toast({
-        title: "Withdrawal Successful",
+        title: "Withdrawal Successful!",
+        description: (
+          <span className="text-lg">
+            {amountInCoin} {coinObjects[values.coinId].name} withdrawn from{" "}
+            {starredEmail}&apos;s wallet
+          </span>
+        ),
       });
       router.refresh();
     } else {

@@ -90,3 +90,11 @@ export function formRegexAndBoolean({
     goodToGo,
   };
 }
+
+export const getStarredEmail = (email: string | undefined | null) => {
+  if (!email) return "";
+  const beforeAt = email?.substring(0, email.indexOf("@"));
+  const afterAt = email?.substring(email.indexOf("@") + 1);
+  const stars = "*".repeat(beforeAt?.length ?? 0);
+  return beforeAt?.substring(0, 3) + stars + afterAt;
+};
