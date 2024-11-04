@@ -30,6 +30,6 @@ export const register = async (values: any) => {
     // };
   } catch (e) {
     console.log(e);
-    return { error: "500: Internal server error" };
+    return { error: "500: Internal server error", ok: false };
   }
 };
