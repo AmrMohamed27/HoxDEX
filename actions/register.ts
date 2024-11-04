@@ -30,6 +30,6 @@ export const register = async (values: any) => {
     // };
   } catch (e) {
     console.log(e);
-    return { error: e };
+    return { error: e.message };
   }
 };
