@@ -7,27 +7,29 @@ export const register = async (values: any) => {
   const { email, password, name } = values;
 
   try {
-    await dbConnect();
-    const userFound = await User.findOne({ name });
-    if (userFound) {
-      return {
-        error: "Email already exists!",
-      };
-    }
-    const user = new User({
-      name,
-      email,
-      password,
-    });
-    const savedUser = await user.save();
-    // Convert Mongoose document to plain object
-    const userObj = savedUser.toObject();
-    return {
-      ok: true,
-      ...userObj,
-      _id: userObj._id.toString(),
-    };
+    throw new Error("500: Internal server error");
+    // await dbConnect();
+    // const userFound = await User.findOne({ name });
+    // if (userFound) {
+    //   return {
+    //     error: "Email already exists!",
+    //   };
+    // }
+    // const user = new User({
+    //   name,
+    //   email,
+    //   password,
+    // });
+    // const savedUser = await user.save();
+    // // Convert Mongoose document to plain object
+    // const userObj = savedUser.toObject();
+    // return {
+    //   ok: true,
+    //   ...userObj,
+    //   _id: userObj._id.toString(),
+    // };
   } catch (e) {
     console.log(e);
+    return { error: e };
   }
 };
