@@ -115,16 +115,22 @@ This is a clone of HoxDEX, a **cryptocurrency exchange platform** built with **N
 HoxDEX/
 ├── app/
 │   ├── (auth)/              # Authentication pages
+│   ├── (root)/              # Main pages
 │   ├── api/                 # API routes
-│   ├── components/          # Reusable components
 │   ├── context/             # React context providers
-│   ├── lib/                 # Utility functions and configurations
 │   ├── models/              # MongoDB models
-│   ├── pages/               # Application pages
 │   ├── providers.tsx        # Theme and context providers
 │   ├── layout.tsx           # Root layout
 ├── public/                  # Static assets
+├── components/              # Reusable components
+├── constants/               # Constant data
+├── hooks/                   # Custom React hooks
+├── lib/                     # Utility functions and configurations
+├── models/                  # Database Models
+├── schema/                  # Schema files for form validation
+├── types/                   # Custom type declarations
 ├── tailwind.config.js       # Tailwind CSS configuration
+├── .env                     # Environment Variables
 ├── package.json             # Project dependencies
 ├── README.md                # Project documentation
 ```
